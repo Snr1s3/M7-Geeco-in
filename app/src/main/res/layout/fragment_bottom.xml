@@ -1,0 +1,83 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="UseAppTint">
+
+    <!-- Barra de navegació inferior -->
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@color/md_theme_primary"
+        android:gravity="center"
+        tools:ignore="DisableBaselineAlignment,UselessParent">
+
+        <!-- Icona 1 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/icons_bottomFrag"
+                android:tint="#FFFFFF"
+                android:src="@drawable/ingressosicon" />
+        </LinearLayout>
+
+        <!-- Icona 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:tint="#FFFFFF"
+                android:contentDescription="@string/icons_bottomFrag"
+                android:src="@drawable/despesesicon"/>
+        </LinearLayout>
+
+        <!-- Icona 3 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:tint="#FFFFFF"
+                android:contentDescription="@string/icons_bottomFrag"
+                android:src="@drawable/homeicon"/>
+        </LinearLayout>
+
+        <!-- Icona 4 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:tint="#FFFFFF"
+                android:contentDescription="@string/icons_bottomFrag"
+                android:src="@drawable/usericon"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

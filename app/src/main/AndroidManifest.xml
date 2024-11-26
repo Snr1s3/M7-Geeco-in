@@ -16,6 +16,12 @@
             android:name=".Preferencies"
             android:exported="false" />
         <activity
+            android:name=".activity_registre"
+            android:exported="false" />
+        <activity
+            android:name=".activity_inici"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
