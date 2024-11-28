@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="icons_bottomFrag">Icones del fragment</string>
     <string name="infoNom">Nom o Adreça electrònica</string>
+    <string name="ISboto">Iniciar Sessió</string>
 </resources>
