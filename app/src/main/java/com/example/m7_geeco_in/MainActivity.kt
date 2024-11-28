@@ -20,11 +20,5 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        // Set onClickListener for the button
-        findViewById<Button>(R.id.button).setOnClickListener {
-            val intent = Intent(this, LlistaIngressos::class.java)
-            startActivity(intent)
-        }
     }
 }
