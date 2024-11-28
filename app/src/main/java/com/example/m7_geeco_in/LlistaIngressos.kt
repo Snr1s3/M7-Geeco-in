@@ -12,20 +12,13 @@ class LlistaIngressos : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_llista_ingressos)
-
         val recyclerview = findViewById<RecyclerView>(R.id.recycler1)
-
         recyclerview.layoutManager = LinearLayoutManager(this)
-
         val data = ArrayList<ItemsView>()
-
-        for (i in 1..20) {
+        for (i in 1..10) {
             data.add(ItemsView(R.drawable.money, "Item $i"))
         }
-
         val adapter = CustomAdapter(data)
-
         recyclerview.adapter = adapter
-
     }
 }

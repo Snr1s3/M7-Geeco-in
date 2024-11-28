@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Set onClickListener for the button
-        findViewById<Button>(R.id.button).setOnClickListener {
+        findViewById<Button>(R.id.b1).setOnClickListener {
             val intent = Intent(this, LlistaIngressos::class.java)
             startActivity(intent)
         }

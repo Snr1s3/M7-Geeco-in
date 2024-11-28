@@ -6,5 +6,5 @@
 - fragment TOP - Karolayn FET
 - fragment Bottom - Karolayn FET
 - Preferencies   (activity_preferencies) D
-- llista ingressos   (activity_llista_ingressos) A 
+- llista ingressos   (activity_llista_ingressos) Done
 - modificar ingressos  (activity_modificar_ingressos) D
