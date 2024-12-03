@@ -1,7 +1,8 @@
 # TO DO
-- Inici  (activity_inici) K
-- Registre  (activity_registre) K
-- Ajuda  (activity_ajuda) A
+- Act Principal (activity_main) K FET
+- Inici  (activity_inici) K FET
+- Registre  (activity_registre) K FET
+- Ajuda  (activity_ajuda) A Done
 - filtros   (activity_filtres) A
 - fragment TOP - Karolayn FET
 - fragment Bottom - Karolayn FET
