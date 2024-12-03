@@ -10,5 +10,8 @@
     <string name="cs_warning">Has oblidat la contrasenya?</string>
     <string name="infoNomAdreca">Nom o Adreça electrònica:</string>
     <string name="infoContrassenya">Contrassenya:</string>
+    <string name="infoRContrassenya">Reescriu contrassenya:</string>
     <string name="infoHint">Value</string>
+    <string name="returnText">Retorna a la pàg anterior</string>
+
 </resources>

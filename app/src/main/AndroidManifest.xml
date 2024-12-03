@@ -28,7 +28,7 @@
             android:name=".activity_registre"
             android:exported="false" />
         <activity
-            android:name=".activity_inici"
+            android:name=".IniciSessio"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
