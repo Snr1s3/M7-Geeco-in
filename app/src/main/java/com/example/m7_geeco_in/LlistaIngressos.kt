@@ -15,7 +15,7 @@ class LlistaIngressos : AppCompatActivity() {
         val recyclerview = findViewById<RecyclerView>(R.id.recycler1)
         recyclerview.layoutManager = LinearLayoutManager(this)
         val data = ArrayList<ItemsView>()
-        for (i in 1..10) {
+        for (i in 1..10000) {
             data.add(ItemsView(R.drawable.money, "Item $i"))
         }
         val adapter = CustomAdapter(data)

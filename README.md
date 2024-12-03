@@ -2,11 +2,11 @@
 - Act Principal (activity_main) K FET
 - Inici  (activity_inici) K FET
 - Registre  (activity_registre) K FET
-- Ajuda  (activity_ajuda) A
+- Ajuda  (activity_ajuda) A Done
 - filtros   (activity_filtres) A
 - fragment TOP - K FET
 - fragment TOP RETURN - K FET
 - fragment Bottom - K FET
 - Preferencies   (activity_preferencies) D
-- llista ingressos   (activity_llista_ingressos) Done
+- llista ingressos   (activity_llista_ingressos) A Done
 - modificar ingressos  (activity_modificar_ingressos) D
