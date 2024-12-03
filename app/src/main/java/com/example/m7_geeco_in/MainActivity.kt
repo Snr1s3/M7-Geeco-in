@@ -15,20 +15,19 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // Apply window insets
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container_view, fragment_top())
+                .commit()
         }
         val button = findViewById<Button>(R.id.isBoto)
         button.setOnClickListener {
-            val intent = Intent(this, IniciSessio::class.java)
+            val intent = Intent(this@MainActivity, IniciSessio::class.java)
             startActivity(intent)
         }
         val txt= findViewById<TextView>(R.id.cCT)
         txt.setOnClickListener {
-            val intent = Intent(this, activity_registre::class.java)
+            val intent = Intent(this@MainActivity, activity_registre::class.java)
             startActivity(intent)
         }
     }

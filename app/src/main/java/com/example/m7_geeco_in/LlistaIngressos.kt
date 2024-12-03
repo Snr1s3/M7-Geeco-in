@@ -1,7 +1,6 @@
 package com.example.m7_geeco_in
 
 import android.os.Bundle
-import android.view.View
 import android.content.Intent;
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -22,9 +21,9 @@ class LlistaIngressos : AppCompatActivity() {
         }
         val adapter = CustomAdapter(data)
         recyclerview.adapter = adapter
-        b1.setOnClickListener({
+        b1.setOnClickListener{
             val intent = Intent(this@LlistaIngressos, Filtres::class.java)
             startActivity(intent)
-        })
+        }
     }
 }

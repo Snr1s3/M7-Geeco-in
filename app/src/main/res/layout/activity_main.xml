@@ -10,6 +10,7 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
         android:name="com.example.m7_geeco_in.fragment_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

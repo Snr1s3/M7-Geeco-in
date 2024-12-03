@@ -13,14 +13,15 @@ class IniciSessio : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_inici)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, RetornTop())
+                .commit()
         }
         val button = findViewById<Button>(R.id.loginButton)
         button.setOnClickListener{
-            val intent = Intent(this, LlistaIngressos::class.java)
+            val intent = Intent(this@IniciSessio, LlistaIngressos::class.java)
+            startActivity(intent)
         }
     }
 }
