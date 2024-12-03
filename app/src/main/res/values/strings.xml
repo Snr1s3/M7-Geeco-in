@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">M7-Geeco-in</string>
+    <string name="app_name">Geeco-in</string>
     <string name="ingressos">Llista Ingressos</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="icons_bottomFrag">Icones del fragment</string>
     <string name="infoNom">Nom o Adreça electrònica</string>
     <string name="ISboto">Iniciar Sessió</string>
+    <string name="CCboto">Crear Compte</string>
+    <string name="cs_warning">Has oblidat la contrasenya?</string>
+    <string name="infoNomAdreca">Nom o Adreça electrònica:</string>
+    <string name="infoContrassenya">Contrassenya:</string>
+    <string name="infoHint">Value</string>
 </resources>
