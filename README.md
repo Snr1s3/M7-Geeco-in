@@ -5,6 +5,6 @@
 - filtros   (activity_filtres) A
 - fragment TOP - Karolayn FET
 - fragment Bottom - Karolayn FET
-- Preferencies   (activity_preferencies) D
+- Preferencies   (activity_preferencies) Done
 - llista ingressos   (activity_llista_ingressos) Done
-- modificar ingressos  (activity_modificar_ingressos) D
+- modificar ingressos  (activity_modificar_ingressos) Done

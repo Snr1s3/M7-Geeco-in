@@ -5,4 +5,20 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="icons_bottomFrag">Icones del fragment</string>
     <string name="infoNom">Nom o Adreça electrònica</string>
+    <string name="preferencies">PREFERÈNCIES</string>
+    <string name="muchotexto">Oculta els números de les despeses i els ingressos perquè ningú els vegi sense permís.</string>
+    <string name="daltonisme">Daltonisme</string>
+    <string name="mfosc">Mode fosc</string>
+    <string name="amagardades">Amagar dades</string>
+    <string name="guarda">Guardar</string>
+    <string name="titol">Titol:</string>
+    <string name="modificar">MODIFICAR</string>
+    <string name="sou_nadal">Sou de Nadal</string>
+    <string name="descripcio">Descripcio:</string>
+    <string name="cuantitat">Cuantitat:</string>
+    <string name="data">Data:</string>
+    <string name="data_num">02/12/23</string>
+    <string name="cuantitat_num">2305,31€</string>
+    <string name="sou_nadal_doble">Sou de doble de nadal.</string>
+    <string name="sortit">Sortir</string>
 </resources>
