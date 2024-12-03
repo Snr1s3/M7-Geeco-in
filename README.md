@@ -1,4 +1,5 @@
 # TO DO
+- Act Principal (activity_main) K
 - Inici  (activity_inici) K
 - Registre  (activity_registre) K
 - Ajuda  (activity_ajuda) A Done
