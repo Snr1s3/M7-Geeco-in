@@ -2,55 +2,114 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:background="@color/md_theme_onPrimary"
     android:orientation="vertical">
 
     <androidx.fragment.app.FragmentContainerView
-        android:name="com.example.m7_geeco_in.fragment_top"
+        android:name="com.example.m7_geeco_in.RetornTop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="top"
-        tools:layout="@layout/fragment_top" />
+        tools:layout="@layout/fragment_retorn_top" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/logoApp"
+            android:name="com.example.m7_geeco_in.logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_logo" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/CCboto"
+        android:textSize="30sp"
+        android:textStyle="italic|bold"
+        android:textColor="@color/md_theme_primary"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif">
+    </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:background="@color/md_theme_tertiaryFixedDim"
-        android:layout_margin="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@strings/infoNom"
-            android:textSize="16sp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginTop="32dp"/>
-        <EditText
-            android:layout_width="wrap_content"
-            android:hint="@strings/infoNom"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginTop="8dp"/>
+        android:padding="20dp"
+        android:layout_margin="30dp"
+        android:layout_gravity="center">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contrasenya:"
+            android:text="@string/infoNomAdreca"
+            android:textColor="#333"
             android:textSize="16sp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginTop="32dp" />
+            android:layout_marginBottom="8dp"/>
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/editbox_background"
+            android:hint="@string/infoHint"
+            android:padding="8dp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/infoContrassenya"
+            android:textColor="#333"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/editbox_background"
+            android:hint="@string/infoHint"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            tools:ignore="TouchTargetSizeCheck" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/infoRContrassenya"
+            android:textColor="#333"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/editbox_background"
+            android:hint="@string/infoHint"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:name="com.example.m7_geeco_in.fragment_bottom"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        tools:layout="@layout/fragment_bottom" />
+        android:layout_gravity="center"
+        android:backgroundTint="@color/md_theme_primary"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:text="@string/CCboto"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

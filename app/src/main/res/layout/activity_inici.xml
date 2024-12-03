@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity_inici">
+    tools:context=".IniciSessio">
 
     <androidx.fragment.app.FragmentContainerView
-        android:name="com.example.m7_geeco_in.fragment_top"
+        android:name="com.example.m7_geeco_in.RetornTop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="top"
-        tools:layout="@layout/fragment_top" />
+        tools:layout="@layout/fragment_retorn_top" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/md_theme_tertiaryFixed"
+        android:background="@color/md_theme_tertiaryFixedDim"
         android:padding="20dp"
         android:layout_margin="30dp"
         android:layout_gravity="center">

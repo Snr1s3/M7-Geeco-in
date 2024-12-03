@@ -1,11 +1,12 @@
 # TO DO
-- Act Principal (activity_main) K
-- Inici  (activity_inici) K
-- Registre  (activity_registre) K
+- Act Principal (activity_main) K FET
+- Inici  (activity_inici) K FET
+- Registre  (activity_registre) K FET
 - Ajuda  (activity_ajuda) A
 - filtros   (activity_filtres) A
-- fragment TOP - Karolayn FET
-- fragment Bottom - Karolayn FET
+- fragment TOP - K FET
+- fragment TOP RETURN - K FET
+- fragment Bottom - K FET
 - Preferencies   (activity_preferencies) D
 - llista ingressos   (activity_llista_ingressos) Done
 - modificar ingressos  (activity_modificar_ingressos) D
