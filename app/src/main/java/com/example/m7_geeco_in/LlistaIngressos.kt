@@ -14,6 +14,7 @@ class LlistaIngressos : AppCompatActivity() {
         setContentView(R.layout.activity_llista_ingressos)
         val recyclerview = findViewById<RecyclerView>(R.id.recycler1)
         val b1 = findViewById<Button>(R.id.button1)
+        val b2 = findViewById<Button>(R.id.button2)
         recyclerview.layoutManager = LinearLayoutManager(this)
         val data = ArrayList<ItemsView>()
         for (i in 1..20) {
@@ -23,6 +24,10 @@ class LlistaIngressos : AppCompatActivity() {
         recyclerview.adapter = adapter
         b1.setOnClickListener{
             val intent = Intent(this@LlistaIngressos, Filtres::class.java)
+            startActivity(intent)
+        }
+        b2.setOnClickListener{
+            val intent = Intent(this@LlistaIngressos, AfegirIngres::class.java)
             startActivity(intent)
         }
     }
