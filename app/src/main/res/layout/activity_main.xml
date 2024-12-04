@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/md_theme_tertiaryFixedDim"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -70,5 +71,14 @@
         android:text="@string/CCboto"
         android:textColor="@color/md_theme_primary"
         tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/but2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/md_theme_primary"
+        android:text="Ajuda"
+        android:textSize="10dp" />
 
 </LinearLayout>

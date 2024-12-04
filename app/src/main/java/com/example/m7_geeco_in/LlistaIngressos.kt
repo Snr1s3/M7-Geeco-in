@@ -19,7 +19,7 @@ class LlistaIngressos : AppCompatActivity() {
         for (i in 1..20) {
             data.add(ItemsView(R.drawable.money, "Item $i"))
         }
-        val adapter = CustomAdapter(data)
+        val adapter = CustomAdapter(this, data)
         recyclerview.adapter = adapter
         b1.setOnClickListener{
             val intent = Intent(this@LlistaIngressos, Filtres::class.java)

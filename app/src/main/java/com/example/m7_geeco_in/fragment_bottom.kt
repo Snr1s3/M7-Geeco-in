@@ -1,10 +1,13 @@
 package com.example.m7_geeco_in
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +30,7 @@ class fragment_bottom : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -34,7 +38,14 @@ class fragment_bottom : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bottom, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_bottom, container, false)
+
+        view.findViewById<ImageButton>(R.id.but4)
+            .setOnClickListener { // Use getActivity() as the context for the Intent
+                val intent = Intent(activity, Preferencies::class.java)
+                startActivity(intent)
+            }
+        return view
     }
 
     companion object {

@@ -1,5 +1,7 @@
 package com.example.m7_geeco_in
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val mList: List<ItemsView>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(private val context: Context, private val mList: List<ItemsView>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -23,6 +25,11 @@ class CustomAdapter(private val mList: List<ItemsView>) : RecyclerView.Adapter<C
         holder.imageView.setImageResource(ItemsViewModel.image)
 
         holder.textView.text = ItemsViewModel.text
+        holder.itemView.setOnClickListener {
+            // Use an Intent to navigate to the main activity or another activity
+            val intent = Intent(context, Afegir_ingresos::class.java)
+            context.startActivity(intent)
+        }
 
     }
 

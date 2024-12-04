@@ -1,6 +1,7 @@
 package com.example.m7_geeco_in
 
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,7 +39,7 @@ class RetornTop : Fragment() {
         val view = inflater.inflate(R.layout.fragment_retorn_top, container, false)
 
         // Configurar el botó returnBoto
-        val returnBoto = view.findViewById<Button>(R.id.returnBoto) // Assegura't que l'ID coincideixi amb el del teu layout
+        val returnBoto = view.findViewById<ImageButton>(R.id.returnBoto) // Assegura't que l'ID coincideixi amb el del teu layout
         returnBoto.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }

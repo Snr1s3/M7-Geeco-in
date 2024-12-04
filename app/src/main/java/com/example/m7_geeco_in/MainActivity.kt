@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, IniciSessio::class.java)
             startActivity(intent)
         }
+        val b2 = findViewById<Button>(R.id.but2)
+        b2.setOnClickListener {
+            val intent = Intent(this@MainActivity, Ajuda::class.java)
+            startActivity(intent)
+        }
         val txt= findViewById<TextView>(R.id.cCT)
         txt.setOnClickListener {
             val intent = Intent(this@MainActivity, activity_registre::class.java)
