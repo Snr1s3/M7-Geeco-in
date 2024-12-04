@@ -46,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="Ajuda"
+                android:fontFamily="@font/roboto"
                 android:textSize="30sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
@@ -64,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:paddingStart="20dp"
+                android:fontFamily="@font/roboto"
                 android:text="Com crear un compte?\nVes a la pàgina de registre o a la de login, on trobaràs l'opció de registrar-te."
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -72,6 +74,7 @@
             <Button
                 android:id="@+id/b1"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/roboto"
                 android:layout_height="wrap_content"
                 android:text="Anar al Login" />
 
@@ -90,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-
+                android:fontFamily="@font/roboto"
                 android:paddingStart="20dp"
                 android:text="Com recuperar la meva contrasenya?\nA la pàgina de login hi ha un botó per accedir al formulari de recuperació de contrasenya."
                 android:textColor="@android:color/black"
@@ -100,6 +103,7 @@
                 android:id="@+id/b2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
                 android:text="Anar al Login" />
 
         </LinearLayout>
@@ -115,6 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto"
                 android:paddingStart="20dp"
                 android:text="Què fer si l'app no funciona correctament?\nSi l'app no funciona correctament, posa't en contacte amb el servei tècnic."
                 android:textColor="@android:color/black"
@@ -134,6 +139,7 @@
                 android:layout_width="145dp"
                 android:layout_height="wrap_content"
                 android:text="Tornar"
+                android:fontFamily="@font/roboto"
                 android:textSize="24dp" />
 
         </LinearLayout>

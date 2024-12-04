@@ -34,17 +34,17 @@
 
     </LinearLayout>
 
-        <TextView
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="167dp"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="40sp"
-        android:textStyle="italic|bold"
-            android:textColor="@color/md_theme_primary"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:fontFamily="sans-serif">
-        </TextView>
+        android:fontFamily="@font/roboto"
+        android:text="@string/app_name"
+        android:textColor="@color/md_theme_primary"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textStyle="italic|bold"></TextView>
 
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -58,6 +58,7 @@
             android:layout_height="70dp"
             android:backgroundTint="@color/md_theme_primary"
             android:text="@string/ISboto"
+            android:fontFamily="@font/roboto"
             tools:ignore="TextContrastCheck" />
 
     </LinearLayout>
@@ -70,6 +71,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/CCboto"
         android:textColor="@color/md_theme_primary"
+        android:fontFamily="@font/roboto"
         tools:ignore="TextContrastCheck" />
 
     <Button
@@ -78,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:backgroundTint="@color/md_theme_primary"
+        android:fontFamily="@font/roboto"
         android:text="Ajuda"
         android:textSize="10dp" />
 

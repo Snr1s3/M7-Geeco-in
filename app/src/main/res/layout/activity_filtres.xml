@@ -42,7 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Ajuda"
+                android:fontFamily="@font/roboto"
+                android:text="Filtres"
                 android:textSize="30sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
@@ -59,6 +60,7 @@
                 android:id="@+id/t2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
                 android:layout_marginTop="30dp"
                 android:paddingStart="20dp"
                 android:text="Filtrar per cantitat:"
@@ -68,6 +70,7 @@
             <EditText
                 android:id="@+id/editTextText"
                 android:layout_width="300dp"
+                android:fontFamily="@font/roboto"
                 android:layout_height="48dp"
                 android:ems="10"
                 android:inputType="text"
@@ -88,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto"
                 android:paddingStart="20dp"
                 android:text="Filtrar per Títol:"
                 android:textColor="@android:color/black"
@@ -96,6 +100,7 @@
             <EditText
                 android:id="@+id/editTextText2"
                 android:layout_width="300dp"
+                android:fontFamily="@font/roboto"
                 android:layout_height="48dp"
                 android:ems="10"
                 android:inputType="text"
@@ -114,6 +119,7 @@
                 android:id="@+id/t4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
                 android:layout_marginTop="30dp"
                 android:paddingStart="20dp"
                 android:text="Filtrar Data: (Format dd/mm/yyyy)"
@@ -124,6 +130,7 @@
                 android:id="@+id/editTextText3"
                 android:layout_width="300dp"
                 android:layout_height="48dp"
+                android:fontFamily="@font/roboto"
                 android:ems="10"
                 android:inputType="text"
                 android:hint="Data" />
@@ -141,6 +148,7 @@
                 android:id="@+id/button1"
                 android:layout_width="145dp"
                 android:layout_height="48dp"
+                android:fontFamily="@font/roboto"
                 android:text="Tornar"
                 android:textSize="24dp" />
 
