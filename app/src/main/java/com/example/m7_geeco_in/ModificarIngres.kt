@@ -13,7 +13,7 @@ class ModificarIngres : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_modificar_ingres)
-        val b1 = findViewById<Button>(R.id.button)
+        val b1 = findViewById<Button>(R.id.b1)
         b1.setOnClickListener{
             val intent = Intent(this@ModificarIngres, LlistaIngressos::class.java)
             startActivity(intent)
