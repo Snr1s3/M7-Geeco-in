@@ -26,7 +26,6 @@ class CustomAdapter(private val context: Context, private val mList: List<ItemsV
 
         holder.textView.text = ItemsViewModel.text
         holder.itemView.setOnClickListener {
-            // Use an Intent to navigate to the main activity or another activity
             val intent = Intent(context, ModificarIngres::class.java)
             context.startActivity(intent)
         }

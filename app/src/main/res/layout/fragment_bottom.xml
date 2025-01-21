@@ -19,6 +19,7 @@
 
         <!-- Icona 1 -->
         <ImageButton
+            android:id="@+id/but1"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -29,6 +30,7 @@
 
         <!-- Icona 2 -->
         <ImageButton
+            android:id="@+id/but2"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -39,6 +41,7 @@
 
         <!-- Icona 3 -->
         <ImageButton
+            android:id="@+id/but3"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"

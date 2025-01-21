@@ -1,19 +1,19 @@
 package com.example.m7_geeco_in
 
+import android.content.Intent
 import android.os.Bundle
-import android.content.Intent;
 import android.widget.Button
-import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-
-class LlistaIngressos : AppCompatActivity() {
-
+class LlistaDespeses : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_llista_ingressos)
+        setContentView(R.layout.activity_llista_despeses)
         val noms = arrayOf("Alba", "Dani", "Karolayn", "David", "M07")
         val b1 = findViewById<Button>(R.id.button1)
         val b2 = findViewById<Button>(R.id.button2)
@@ -26,11 +26,11 @@ class LlistaIngressos : AppCompatActivity() {
         }
 
         b1.setOnClickListener{
-            val intent = Intent(this@LlistaIngressos, Filtres::class.java)
+            val intent = Intent(this@LlistaDespeses, Filtres::class.java)
             startActivity(intent)
         }
         b2.setOnClickListener{
-            val intent = Intent(this@LlistaIngressos, AfegirIngres::class.java)
+            val intent = Intent(this@LlistaDespeses, AfegirIngres::class.java)
             startActivity(intent)
         }
     }
