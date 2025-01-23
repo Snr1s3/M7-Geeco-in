@@ -1,3 +1,3 @@
 package com.example.m7_geeco_in
 
-data class ItemsView(val image: Int, val text: String)
+data class ItemsView(val image: Int, val text: String, val euro: String)

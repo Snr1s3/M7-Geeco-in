@@ -41,19 +41,17 @@ class fragment_bottom : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_bottom, container, false)
 
         view.findViewById<ImageButton>(R.id.but1)
-            .setOnClickListener { // Use getActivity() as the context for the Intent
-                val intent = Intent(activity, Preferencies::class.java)
+            .setOnClickListener {
+                val intent = Intent(activity, LlistaDespeses::class.java)
                 startActivity(intent)
             }
-        return view
         view.findViewById<ImageButton>(R.id.but2)
-            .setOnClickListener { // Use getActivity() as the context for the Intent
-                val intent = Intent(activity, Preferencies::class.java)
+            .setOnClickListener {
+                val intent = Intent(activity, LlistaIngressos::class.java)
                 startActivity(intent)
             }
-        return view
         view.findViewById<ImageButton>(R.id.but4)
-            .setOnClickListener { // Use getActivity() as the context for the Intent
+            .setOnClickListener {
                 val intent = Intent(activity, Preferencies::class.java)
                 startActivity(intent)
             }
