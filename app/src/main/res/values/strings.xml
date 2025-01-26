@@ -7,11 +7,13 @@
     <string name="logout">Cerrar sessió</string>
     <string name="login">Inici sessió</string>
     <string name="despeses">Despeses</string>
+    <string name="objectius">Objectius</string>
     <string name="settings">Ajustes</string>
     <string name="profile">Perfil</string>
     <string name="opcions">Opcions</string>
     <string name="nd_open">Obrir</string>
     <string name="nd_close">Tancar</string>
+    <string name="question">Que vols fer:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="icons_bottomFrag">Icones del fragment</string>
