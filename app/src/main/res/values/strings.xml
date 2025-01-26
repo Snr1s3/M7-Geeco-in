@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Geeco-in</string>
     <string name="ingressos">Llista Ingressos</string>
+    <string name="about">Sobre</string>
+    <string name="help">Ajuda</string>
+    <string name="ingresos">Ingressos</string>
+    <string name="logout">Cerrar sessió</string>
+    <string name="login">Inici sessió</string>
+    <string name="despeses">Despeses</string>
+    <string name="settings">Ajustes</string>
+    <string name="profile">Perfil</string>
+    <string name="opcions">Opcions</string>
+    <string name="nd_open">Obrir</string>
+    <string name="nd_close">Tancar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="icons_bottomFrag">Icones del fragment</string>
