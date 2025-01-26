@@ -16,7 +16,7 @@
             android:name=".ModificarIngres"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".Header"
             android:exported="false" />
         <activity
             android:name=".AfegirIngres"
