@@ -19,44 +19,47 @@
 
         <!-- Icona 1 -->
         <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:id="@+id/but1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="@string/icons_bottomFrag"
-            android:scaleType="centerInside"
-            android:src="@drawable/ingressosicon" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/round_monetization_on_24" />
 
         <!-- Icona 2 -->
         <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:id="@+id/but2"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="@string/icons_bottomFrag"
-            android:scaleType="centerInside"
-            android:src="@drawable/despesesicon"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/m1_24" />
 
         <!-- Icona 3 -->
         <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:id="@+id/but3"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="@string/icons_bottomFrag"
-            android:scaleType="centerInside"
-            android:src="@drawable/homeicon"/>
-
+            android:src="@drawable/baseline_home_24"
+            android:scaleType="fitCenter" />
         <!-- Icona 4 -->
+
         <ImageButton
             android:id="@+id/but4"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="@string/icons_bottomFrag"
-            android:scaleType="centerInside"
-            android:src="@drawable/usericon"/>
+            android:src="@drawable/baseline_person_24"
+            android:scaleType="fitCenter" />
     </LinearLayout>
 </FrameLayout>
 

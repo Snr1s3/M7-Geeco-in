@@ -20,7 +20,7 @@ class Header : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_pruba)
+        setContentView(R.layout.activity_inicial)
         drawerLayout = findViewById(R.id.main2)
         navigationView = findViewById(R.id.nv_ejemplo)
         toolbar = findViewById(R.id.toolbar)
@@ -41,7 +41,7 @@ class Header : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         }
         val button2 = findViewById<Button>(R.id.bdespese)
         button2.setOnClickListener {
-            val intent = Intent(this@Header, Header::class.java)
+            val intent = Intent(this@Header, LlistaDespeses::class.java)
             startActivity(intent)
         }
     }
@@ -65,7 +65,7 @@ class Header : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
             val intent = Intent(this@Header, Preferencies::class.java)
             startActivity(intent)
         } else if (itemId == R.id.despeses) {
-            val intent = Intent(this@Header, LlistaIngressos::class.java)
+            val intent = Intent(this@Header, LlistaDespeses::class.java)
             startActivity(intent)
         } else if (itemId == R.id.ingresos) {
             val intent = Intent(this@Header, LlistaIngressos::class.java)

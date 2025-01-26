@@ -71,7 +71,7 @@
             android:layout_width="300dp"
             android:layout_height="75dp"
             android:fontFamily="@font/roboto"
-            android:text="@string/despeses"
+            android:text="@string/despeses_"
             android:textSize="30sp"
             android:layout_marginBottom="50dp"/>
 

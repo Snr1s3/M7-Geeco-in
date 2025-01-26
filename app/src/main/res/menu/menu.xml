@@ -19,7 +19,7 @@
                     android:id="@+id/despeses"
                     android:icon="@drawable/despesesicon"
                     android:orderInCategory="100"
-                    android:title="@string/despeses" />
+                    android:title="@string/despeses_" />
                 <item
                     android:id="@+id/ingresos"
                     android:icon="@drawable/ingressosicon"

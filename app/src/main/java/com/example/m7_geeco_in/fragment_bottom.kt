@@ -40,31 +40,26 @@ class fragment_bottom : Fragment() {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_bottom, container, false)
 
+        view.findViewById<ImageButton>(R.id.but1)
+            .setOnClickListener {
+                val intent = Intent(activity, LlistaDespeses::class.java)
+                startActivity(intent)
+            }
+        view.findViewById<ImageButton>(R.id.but2)
+            .setOnClickListener {
+                val intent = Intent(activity, LlistaIngressos::class.java)
+                startActivity(intent)
+            }
+        view.findViewById<ImageButton>(R.id.but3)
+            .setOnClickListener {
+                val intent = Intent(activity, Header::class.java)
+                startActivity(intent)
+            }
         view.findViewById<ImageButton>(R.id.but4)
-            .setOnClickListener { // Use getActivity() as the context for the Intent
+            .setOnClickListener {
                 val intent = Intent(activity, Preferencies::class.java)
                 startActivity(intent)
             }
         return view
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_bottom.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_bottom().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }
