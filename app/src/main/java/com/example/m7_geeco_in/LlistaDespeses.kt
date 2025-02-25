@@ -10,21 +10,29 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+data class Despesses (val expense_id:Int, val idUsuari:Int, val noms:String, val imports:Int)
+
 class LlistaDespeses : AppCompatActivity() {
+
+    companion object {
+        val Despeses: List<Despesses> = listOf(
+            Despesses(1, 1, "Alba", 200),
+            Despesses(2,2,"Dani", 300),
+            Despesses(3,3,"Karolayn", 400))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_llista_despeses)
-        val noms = arrayOf("Alba", "Dani", "Karolayn", "David", "M07")
-        val imports = arrayOf(200,300,400,500,600)
         val b1 = findViewById<Button>(R.id.button1)
         val b2 = findViewById<Button>(R.id.button2)
         val bundle = intent.extras
         if (bundle != null && bundle.size() != 0) {
             val stringValue = bundle?.getString("fNom") ?: "Null"
-            val stringValue2 = bundle?.getString("fDiners") ?: "Null"
-            AddData(noms, stringValue, imports, stringValue2)
+            val stringValue2 = bundle.getString("fDiners") ?: "Null"
+            AddData(Despeses, "Null", "Null")
         } else {
-            AddData(noms, "Null", imports, "Null")
+            AddData(Despeses, "Null", "Null")
         }
 
         b1.setOnClickListener{
