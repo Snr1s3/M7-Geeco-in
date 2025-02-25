@@ -26,7 +26,7 @@ interface RetrofitService {
     suspend fun llistaIngressos( @Path("income_id") idIngres:Int):List<Ingressos>
 
     @GET("expenses/")
-    suspend fun llistaDesoeses():List<Despesses>
+    suspend fun llistaDespeses():List<Despesses>
 
     @GET("expenses/{expense_id}")
     suspend fun llistaDespeses( @Path("expense_id") idDespeses:Int):List<Despesses>
