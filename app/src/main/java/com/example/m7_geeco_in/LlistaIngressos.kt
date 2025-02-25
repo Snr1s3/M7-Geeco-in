@@ -59,8 +59,6 @@ class LlistaIngressos : AppCompatActivity() {
             data.add(ItemsView(R.drawable.money, ingres.noms, importsString2))
         }
 
-
-
         val adapter = CustomAdapter(this, data)
         recyclerview.adapter = adapter
     }

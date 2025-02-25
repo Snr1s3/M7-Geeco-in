@@ -45,41 +45,17 @@ class LlistaDespeses : AppCompatActivity() {
         }
     }
 
-    fun AddData(noms: Array<String>, key: String, import: Array<Int>, key2: String){
+    fun AddData(Despesses:List<Despesses>, key: String, key2: String) {
         val recyclerview = findViewById<RecyclerView>(R.id.recycler1)
         recyclerview.layoutManager = LinearLayoutManager(this)
 
         val data = ArrayList<ItemsView>()
-        for (i in noms.indices) {
-            if(key == "Null" && key2 == "Null"){
-                val num =import[i]
-                val imp = "$num€"
-                data.add(ItemsView(R.drawable.money, noms[i], imp))
-            }
-            else if(key == "Null" && key2 != "Null") {
-                if(import[i] == key2.toInt()){
-                    val num =import[i]
-                    val imp = "$num€"
-                    data.add(ItemsView(R.drawable.money, noms[i], imp))
-                }
-            }
-            else if(key != "Null" && key2 == "Null") {
-                if(noms[i].contains(key)){
-                    val num =import[i]
-                    val imp = "$num€"
-                    data.add(ItemsView(R.drawable.money, noms[i], imp))
-                }
-            }
-            else{
-                if(noms[i].contains(key)){
-                    if(import[i] == key2.toInt()){
-                        val num =import[i]
-                        val imp = "$num€"
-                        data.add(ItemsView(R.drawable.money, noms[i], imp))
-                    }
-                }
-            }
+        for (despesses in LlistaDespeses.Despeses) {
+            val importsString = despesses.imports.toString()
+            val importsString2 = "$importsString€"
+            data.add(ItemsView(R.drawable.money, despesses.noms, importsString2))
         }
+
         val adapter = CustomAdapter(this, data)
         recyclerview.adapter = adapter
     }
