@@ -1,7 +1,9 @@
 package com.example.m7_geeco_in.data
 
+import com.example.m7_geeco_in.Despesses
 import com.example.m7_geeco_in.Ingressos
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
@@ -17,8 +19,17 @@ import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
 interface RetrofitService {
+    @GET("incomes/")
+    suspend fun  llistaIngressos():List<Ingressos>
+
     @GET("incomes/{income_id}")
     suspend fun llistaIngressos( @Path("income_id") idIngres:Int):List<Ingressos>
+
+    @GET("expenses/")
+    suspend fun llistaDesoeses():List<Despesses>
+
+    @GET("expenses/{expense_id}")
+    suspend fun llistaDespeses( @Path("expense_id") idDespeses:Int):List<Despesses>
 }
 
 class IngressosAPI {

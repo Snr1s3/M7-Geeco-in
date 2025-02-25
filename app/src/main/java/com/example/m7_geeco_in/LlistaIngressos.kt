@@ -2,6 +2,7 @@ package com.example.m7_geeco_in
 
 import android.os.Bundle
 import android.content.Intent;
+import android.os.Parcelable
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +12,10 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 // import com.example.recyclerview.reserves.ReservesAPI
+import kotlinx.parcelize.Parcelize
 
-data class Ingressos(val income_id:Int, val idUsuari:Int, val noms:String, val imports:Int)
+@Parcelize
+data class Ingressos(val income_id:Int, val idUsuari:Int, val noms:String, val imports:Int) : Parcelable
 
 class LlistaIngressos : AppCompatActivity() {
     companion object {

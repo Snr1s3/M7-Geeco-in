@@ -40,6 +40,9 @@ dependencies {
     implementation(libs.retrofit)
     // gson converter
     implementation (libs.converter.gson)
+    //Parcelize
+    implementation( libs.kotlin.parcelize.runtime)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
