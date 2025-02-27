@@ -1,5 +1,6 @@
 package com.example.m7_geeco_in.data
 
+import com.example.m7_geeco_in.Despesses
 import com.example.m7_geeco_in.Ingressos
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -17,20 +18,35 @@ import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
 interface RetrofitService {
+    @GET("incomes/")
+    suspend fun getIngressosList(
+        @Query("skip") skip: Int,
+        @Query("limit") limit: Int
+    ): List<Ingressos>
+
+    @GET("expenses/")
+    suspend fun getDespesesList(
+        @Query("skip") skip: Int,
+        @Query("limit") limit: Int
+    ): List<Despesses>
+
     @GET("incomes/{income_id}")
     suspend fun llistaIngressos( @Path("income_id") idIngres:Int):List<Ingressos>
 }
 
-class IngressosAPI {
-    companion object  {
-        private var mAPI : RetrofitService? = null;
+class geecoinAPI {
+    companion object {
+        private var mAPI: RetrofitService? = null
 
         @Synchronized
         fun API(): RetrofitService {
             if (mAPI == null) {
+                val unsafeClient = getUnsafeOkHttpClient()
+
                 mAPI = Retrofit.Builder()
+                    .client(unsafeClient)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("https://54.173.54.56.443")
+                    .baseUrl("https://54.173.54.56:443")
                     .build()
                     .create(RetrofitService::class.java)
             }
@@ -38,6 +54,7 @@ class IngressosAPI {
         }
     }
 }
+
 
 private fun getUnsafeOkHttpClient(): OkHttpClient {
     try {
