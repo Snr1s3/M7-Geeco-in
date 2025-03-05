@@ -3,10 +3,14 @@ package com.example.m7_geeco_in.data
 import com.example.m7_geeco_in.Despesses
 import com.example.m7_geeco_in.Ingressos
 import okhttp3.OkHttpClient
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 import java.security.SecureRandom
@@ -32,6 +36,22 @@ interface RetrofitService {
 
     @GET("incomes/{income_id}")
     suspend fun llistaIngressos( @Path("income_id") idIngres:Int):List<Ingressos>
+
+    @POST("incomes/")
+    suspend fun postIngres(
+        @Field("title") title: String?,
+        @Field("description") description: String?,
+        @Field("amount") amount: Int?,
+        @Field("date") date: String?
+    ): Call<Ingressos>
+
+    @POST("expenses/")
+    suspend fun postDespese(
+        @Field("title") title: String?,
+        @Field("description") description: String?,
+        @Field("amount") amount: Int?,
+        @Field("date") date: String?
+    ): Call<Despesses>
 }
 
 class geecoinAPI {
