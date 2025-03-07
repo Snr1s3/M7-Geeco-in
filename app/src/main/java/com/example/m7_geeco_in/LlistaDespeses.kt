@@ -4,10 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,10 +28,11 @@ class LlistaDespeses : AppCompatActivity() {
         if (bundle != null && bundle.size() != 0) {
             val stringValue = bundle.getString("fNom") ?: null
             val stringValue2 = bundle.getString("fDiners") ?: null
+            val stringValue3 = bundle.getString("fData") ?: null
             val import = stringValue2?.toIntOrNull() ?: null
-            fetchDespesesList(skip = 0, limit = 10,stringValue, import)
+            fetchDespesesList(skip = 0, limit = 10,stringValue, import, stringValue3)
         } else {
-            fetchDespesesList(skip = 0, limit = 10,null,null)
+            fetchDespesesList(skip = 0, limit = 10,null,null,null)
         }
 
         b1.setOnClickListener{
@@ -47,28 +45,48 @@ class LlistaDespeses : AppCompatActivity() {
         }
     }
 
-    fun AddData(Despesses:List<Despesses>, key: String?, key2: Int?){
+    fun AddData(Despesses:List<Despesses>, key: String?, key2: Int?,key3: String?){
         val recyclerview = findViewById<RecyclerView>(R.id.recycler1)
         recyclerview.layoutManager = LinearLayoutManager(this)
         val data = ArrayList<ItemsView>()
         for (despesa in Despesses) {
             val importsString = despesa.amount.toString()
             val importsString2 = "$importsString€"
-            if(key == null && key2 == null){
+            if(key == null && key2 == null && key3 == null){
                 data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
             }
-            if(key2 != null && key == null){
+            if(key == null && key2 != null && key3 == null){
                 if(despesa.amount == key2){
                     data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
                 }
             }
-            if(key != null && key2 == null){
+            if(key != null && key2 == null && key3 == null){
                 if(despesa.title == key){
                     data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
                 }
             }
+            if(key == null && key2 == null && key3 != null){
+                if(despesa.date == key3){
+                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                }
+            }
+            if(key != null && key2 != null && key3 == null){
+                if(key == despesa.title && despesa.amount == key2){
+                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                }
+            }
+            if(key != null && key2 == null && key3 != null){
+                if(key == despesa.title && key3 == despesa.date){
+                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                }
+            }
+            if(key == null && key2 != null && key3 != null){
+                if(key2 ==despesa.amount && despesa.date == key3){
+                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                }
+            }
             else{
-                if(key == despesa.title && key2 == despesa.amount ){
+                if(key == despesa.title && key2 == despesa.amount && key3 == despesa.date){
                     data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
                 }
             }
@@ -77,11 +95,11 @@ class LlistaDespeses : AppCompatActivity() {
         recyclerview.adapter = adapter
     }
 
-    private fun fetchDespesesList(skip: Int, limit: Int, key: String?, key2: Int?) {
+    private fun fetchDespesesList(skip: Int, limit: Int, key: String?, key2: Int?,key3: String?){
         lifecycleScope.launch {
             try {
                 expenses = geecoinAPI.API().getDespesesList(skip = skip, limit = limit)
-                AddData(expenses!!, key, key2)
+                AddData(expenses!!, key, key2, key3)
                 Toast.makeText(this@LlistaDespeses, "Data loaded successfully!", Toast.LENGTH_SHORT).show()
             }  catch (e: HttpException) {
                 println("HTTP Error: ${e.message}")

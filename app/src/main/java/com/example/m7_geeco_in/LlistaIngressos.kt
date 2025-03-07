@@ -29,11 +29,12 @@ class LlistaIngressos : AppCompatActivity() {
        if (bundle != null && bundle.size() != 0) {
            val stringValue = bundle.getString("fNom") ?: null
            val stringValue2 = bundle.getString("fDiners") ?: null
+           val stringValue3 = bundle.getString("fData") ?: null
            val import = stringValue2?.toIntOrNull() ?: null
-           fetchIngressosList(skip = 0, limit = 10,stringValue, import)
+           fetchIngressosList(skip = 0, limit = 10,stringValue, import, stringValue3)
         } else {
-           Toast.makeText(this@LlistaIngressos, "Aqui", Toast.LENGTH_SHORT).show()
-           fetchIngressosList(skip = 0, limit = 10,null, null)
+           //Toast.makeText(this@LlistaIngressos, "Aqui", Toast.LENGTH_SHORT).show()
+           fetchIngressosList(skip = 0, limit = 10,null, null, null)
         }
         b1.setOnClickListener{
             val intent = Intent(this@LlistaIngressos, Filtres::class.java)
@@ -45,7 +46,7 @@ class LlistaIngressos : AppCompatActivity() {
         }
     }
 
-    fun AddData(ingressos:List<Ingressos>, key: String?, key2: Int?){
+    fun AddData(ingressos:List<Ingressos>, key: String?, key2: Int?,key3: String?){
         val recyclerview = findViewById<RecyclerView>(R.id.recycler1)
         recyclerview.layoutManager = LinearLayoutManager(this)
 
@@ -53,21 +54,42 @@ class LlistaIngressos : AppCompatActivity() {
         for (ingres in ingressos) {
             val importsString = ingres.amount.toString()
             val importsString2 = "$importsString€"
-            if(key == null && key2 == null){
+
+            if(key == null && key2 == null && key3 == null){
                 data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
             }
-            if(key2 != null && key == null){
+            if(key == null && key2 != null && key3 == null){
                 if(ingres.amount == key2){
                     data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
                 }
             }
-            if(key != null && key2 == null){
+            if(key != null && key2 == null && key3 == null){
                 if(ingres.title == key){
                     data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
                 }
             }
+            if(key == null && key2 == null && key3 != null){
+                if(ingres.date == key3){
+                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                }
+            }
+            if(key != null && key2 != null && key3 == null){
+                if(key == ingres.title && ingres.amount == key2){
+                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                }
+            }
+            if(key != null && key2 == null && key3 != null){
+                if(key == ingres.title && key3 == ingres.date){
+                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                }
+            }
+            if(key == null && key2 != null && key3 != null){
+                if(key2 == ingres.amount && ingres.date == key3){
+                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                }
+            }
             else{
-                if(key == ingres.title && key2 == ingres.amount ){
+                if(key == ingres.title && key2 == ingres.amount && key3 == ingres.date){
                     data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
                 }
             }
@@ -76,11 +98,11 @@ class LlistaIngressos : AppCompatActivity() {
         val adapter = CustomAdapter(this, data)
         recyclerview.adapter = adapter
     }
-    private fun fetchIngressosList(skip: Int, limit: Int, key: String?, key2: Int?) {
+    private fun fetchIngressosList(skip: Int, limit: Int, key: String?, key2: Int?,key3: String?) {
         lifecycleScope.launch {
             try {
                 incomes = geecoinAPI.API().getIngressosList(skip = skip, limit = limit)
-                AddData(incomes!!, key, key2)
+                AddData(incomes!!, key, key2,key3)
                 Toast.makeText(this@LlistaIngressos, "Data loaded successfully!", Toast.LENGTH_SHORT).show()
             }  catch (e: HttpException) {
                 println("HTTP Error: ${e.message}")
