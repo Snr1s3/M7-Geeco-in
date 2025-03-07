@@ -24,10 +24,7 @@ class ModificarIngres : AppCompatActivity() {
         val b1 = findViewById<Button>(R.id.b1)
         val deleteButton = findViewById<Button>(R.id.b2)
         val itemId = intent.getIntExtra("ITEM_ID", -1)
-
-        Toast.makeText(this, "ID de ingres no valid", Toast.LENGTH_SHORT).show()
         if (itemId != -1) {
-            Toast.makeText(this, "ID "+itemId, Toast.LENGTH_SHORT).show()
             fetchIngres(itemId)
             deleteButton.setOnClickListener {
                 if (itemId != -1) {
@@ -36,6 +33,10 @@ class ModificarIngres : AppCompatActivity() {
                     Toast.makeText(this, "ID de ingres no valid", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+        b1.setOnClickListener {
+            val intent = Intent(this@ModificarIngres, LlistaIngressos::class.java)
+            startActivity(intent)
         }
     }
 
@@ -82,15 +83,10 @@ class ModificarIngres : AppCompatActivity() {
         val descr = findViewById<EditText>(R.id.et_descripcio)
         val q = findViewById<EditText>(R.id.et_cuantitat)
         val data = findViewById<EditText>(R.id.et_data)
-
         t.setText(income.title)
-
-        // Handle the case where 'desc' might be null
-        //descr.setText(income.desc ?: "No Description") // Use a default value if 'desc' is null
-
-        q.setText(String.format(Locale.getDefault(), "%,d", income.amount)) // Format number with thousands separator
-        data.setText(income.date ?: "No Date") // Handle null date if necessary
-
+        //descr.setText(income.desc ?: "No Description")
+        q.setText(String.format(Locale.getDefault(), "%,d", income.amount))
+        data.setText(income.date ?: "No Date")
         Log.d("ModificarIngres", "Title: ${income.title}, Desc: ${income.desc}, Amount: ${income.amount}, Date: ${income.date}")
     }
 }

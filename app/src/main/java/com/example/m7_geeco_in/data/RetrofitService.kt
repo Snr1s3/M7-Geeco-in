@@ -50,6 +50,9 @@ interface RetrofitService {
     @GET("incomes/{income_id}")
     suspend fun ingresId( @Path("income_id") idIngres:Int):Ingressos
 
+    @GET("expenses/{expenses_id}")
+    suspend fun despesesId( @Path("expenses_id") idDespesa:Int):Despesses
+
     @POST("incomes/")
     suspend fun postIngres(@Body request: IngresRequest): IngresRequest
 

@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.m7_geeco_in.data.DespesaRequest
+import com.example.m7_geeco_in.data.IngresRequest
 import com.example.m7_geeco_in.data.geecoinAPI
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -23,8 +25,8 @@ class AfegirDespesa : AppCompatActivity() {
         setContentView(R.layout.activity_afegir_ingres)
 
         val titol: EditText = findViewById(R.id.et_titol)
-        val descripcio: EditText = findViewById(R.id.et_descripion)
-        val quantitat: EditText = findViewById(R.id.et_cuantitat)
+        val descripcio: EditText = findViewById(R.id.et_descripcio)
+        val quantitat: EditText = findViewById(R.id.et_quantitat)
         val data: EditText = findViewById(R.id.et_data)
         val b1 = findViewById<Button>(R.id.b1)
 
@@ -37,32 +39,27 @@ class AfegirDespesa : AppCompatActivity() {
                 Toast.makeText(this, "Si us plau, ompli tots els camps.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-           /* lifecycleScope.launch {
+            b1.isEnabled = false
+
+            lifecycleScope.launch {
                 try {
                     val api = geecoinAPI.API()
-                   // api.postDespese(title, description, amount, date).enqueue(object :
-                        Callback<Despesses> {
-                        override fun onResponse(
-                            call: Call<Despesses>,
-                            response: Response<Despesses>
-                        ) {
-                            if (response.isSuccessful) {
-                                Toast.makeText(this@AfegirDespesa, "Despessa creat correctament.", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this@AfegirDespesa, LlistaIngressos::class.java)
-                                startActivity(intent)
-                                finish()
-                            } else {
-                                Toast.makeText(this@AfegirDespesa, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                        override fun onFailure(call: Call<Despesses>, t: Throwable) {
-                            Toast.makeText(this@AfegirDespesa, "Error de connexió: ${t.message}", Toast.LENGTH_SHORT).show()
-                        }
-                    })
+                    val request = DespesaRequest(title, description, amount, date)
+                    val response = api.postExpanses(request)
+
+                    if (response != null) {
+                        Toast.makeText(this@AfegirDespesa,"Despesa creada correctament.", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@AfegirDespesa, LlistaDespeses::class.java))
+                        finish()
+                    } else {
+                        Toast.makeText(this@AfegirDespesa, "Error en la resposta del servidor.", Toast.LENGTH_SHORT).show()
+                    }
                 } catch (e: Exception) {
-                    Toast.makeText(this@AfegirDespesa, "Error en carregar les dades: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AfegirDespesa,"Error de connexió: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                } finally {
+                    b1.isEnabled = true
                 }
-            }*/
+            }
         }
     }
 }
