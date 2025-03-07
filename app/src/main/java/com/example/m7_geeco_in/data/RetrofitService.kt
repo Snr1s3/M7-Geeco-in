@@ -3,13 +3,11 @@ package com.example.m7_geeco_in.data
 import com.example.m7_geeco_in.Despesses
 import com.example.m7_geeco_in.Ingressos
 import okhttp3.OkHttpClient
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -21,6 +19,20 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLSocketFactory
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
+
+data class IngresRequest(
+    val title: String,
+    val description: String,
+    val amount: Int,
+    val date: String
+)
+
+data class DespesaRequest(
+    val title: String,
+    val description: String,
+    val amount: Int,
+    val date: String
+)
 
 interface RetrofitService {
     @GET("incomes/")
@@ -39,21 +51,16 @@ interface RetrofitService {
     suspend fun llistaIngressos( @Path("income_id") idIngres:Int):List<Ingressos>
 
     @POST("incomes/")
-    suspend fun postIngres(
-        @Body title: String?,
-        @Body description: String?,
-        @Body amount: Int?,
-        @Body date: String?
-    ): Call<Ingressos>
-
+    suspend fun postIngres(@Body request: IngresRequest): IngresRequest
 
     @POST("expenses/")
-    suspend fun postDespese(
-        @Field("title") title: String?,
-        @Field("description") description: String?,
-        @Field("amount") amount: Int?,
-        @Field("date") date: String?
-    ): Call<Despesses>
+    suspend fun postExpanses(@Body request: DespesaRequest): DespesaRequest
+
+    @DELETE("incomes/{income_id}")
+    suspend fun deleteIngres(@Path("income_id") idIngres: Int): Response<Unit>
+
+    @DELETE("/expenses/{expense_id}")
+    suspend fun deleteExpese(@Path("expense_id") idExpese: Int): Response<Unit>
 }
 
 class geecoinAPI {
@@ -80,7 +87,6 @@ class geecoinAPI {
 
 private fun getUnsafeOkHttpClient(): OkHttpClient {
     try {
-        // Create a trust manager that does not validate certificate chains
         val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
             @Throws(CertificateException::class)
             override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {
@@ -94,10 +100,8 @@ private fun getUnsafeOkHttpClient(): OkHttpClient {
                 return arrayOf()
             }
         })
-        // Install the all-trusting trust manager
         val sslContext = SSLContext.getInstance("SSL")
         sslContext.init(null, trustAllCerts, SecureRandom())
-        // Create an ssl socket factory with our all-trusting manager
         val sslSocketFactory: SSLSocketFactory = sslContext.socketFactory
 
         val builder = OkHttpClient.Builder()

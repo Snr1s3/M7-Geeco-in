@@ -9,10 +9,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.m7_geeco_in.data.geecoinAPI
+import com.example.m7_geeco_in.data.IngresRequest
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class AfegirIngres : AppCompatActivity() {
@@ -32,33 +30,35 @@ class AfegirIngres : AppCompatActivity() {
             val description = descripcio.text.toString().trim()
             val amount = quantitat.text.toString().toIntOrNull()
             val date = data.text.toString().trim()
+
             if (title.isBlank() || description.isBlank() || amount == null || date.isBlank()) {
-                Toast.makeText(this, "Si us plau, ompli tots els camps.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Si us plau, ompli tots els camps correctament.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
+            b1.isEnabled = false
+
             lifecycleScope.launch {
                 try {
                     val api = geecoinAPI.API()
-                    api.postIngres(title, description, amount, date).enqueue(object : Callback<Ingressos> {
-                        override fun onResponse(call: Call<Ingressos>, response: Response<Ingressos>) {
-                            if (response.isSuccessful) {
-                                Toast.makeText(this@AfegirIngres, "Ingrés creat correctament.", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this@AfegirIngres, LlistaIngressos::class.java)
-                                startActivity(intent)
-                                finish()
-                            } else {
-                                Toast.makeText(this@AfegirIngres, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                        override fun onFailure(call: Call<Ingressos>, t: Throwable) {
-                            Toast.makeText(this@AfegirIngres, "Error de connexió: ${t.message}", Toast.LENGTH_SHORT).show()
-                        }
-                    })
+                    val request = IngresRequest(title, description, amount, date)
+                    val response = api.postIngres(request)
+
+                    if (response != null) {
+                        Toast.makeText(this@AfegirIngres, "Ingrés creat correctament.", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@AfegirIngres, LlistaIngressos::class.java))
+                        finish()
+                    } else {
+                        Toast.makeText(this@AfegirIngres, "Error en la resposta del servidor.", Toast.LENGTH_SHORT).show()
+                    }
                 } catch (e: Exception) {
-                    Toast.makeText(this@AfegirIngres, "Error en carregar les dades: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AfegirIngres, "Error de connexió: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                } finally {
+                    b1.isEnabled = true  // Rehabilitar el botó en qualsevol cas
                 }
             }
         }
 
     }
 }
+
