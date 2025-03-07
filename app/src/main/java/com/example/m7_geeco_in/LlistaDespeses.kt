@@ -53,41 +53,41 @@ class LlistaDespeses : AppCompatActivity() {
             val importsString = despesa.amount.toString()
             val importsString2 = "$importsString€"
             if(key == null && key2 == null && key3 == null){
-                data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
             }
             if(key == null && key2 != null && key3 == null){
                 if(despesa.amount == key2){
-                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
                 }
             }
             if(key != null && key2 == null && key3 == null){
                 if(despesa.title == key){
-                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
                 }
             }
             if(key == null && key2 == null && key3 != null){
                 if(despesa.date == key3){
-                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
                 }
             }
             if(key != null && key2 != null && key3 == null){
                 if(key == despesa.title && despesa.amount == key2){
-                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
                 }
             }
             if(key != null && key2 == null && key3 != null){
                 if(key == despesa.title && key3 == despesa.date){
-                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
                 }
             }
             if(key == null && key2 != null && key3 != null){
                 if(key2 ==despesa.amount && despesa.date == key3){
-                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
                 }
             }
             else{
                 if(key == despesa.title && key2 == despesa.amount && key3 == despesa.date){
-                    data.add(ItemsView(R.drawable.money, despesa.title, importsString2))
+                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
                 }
             }
         }

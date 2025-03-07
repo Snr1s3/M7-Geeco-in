@@ -32,8 +32,8 @@ class CustomAdapter(private val context: Context, private val mList: List<ItemsV
                 is LlistaDespeses -> Intent(context, modificar_despesa::class.java)
                 else -> null
             }
-
             intent?.let {
+                it.putExtra("ITEM_ID", ItemsViewModel.id) // Pass the ID
                 context.startActivity(it)
             }
         }

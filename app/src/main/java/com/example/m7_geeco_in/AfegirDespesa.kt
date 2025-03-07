@@ -37,7 +37,7 @@ class AfegirDespesa : AppCompatActivity() {
                 Toast.makeText(this, "Si us plau, ompli tots els camps.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            lifecycleScope.launch {
+            /*lifecycleScope.launch {
                 try {
                     val api = geecoinAPI.API()
                     api.postDespese(title, description, amount, date).enqueue(object :
@@ -62,7 +62,7 @@ class AfegirDespesa : AppCompatActivity() {
                 } catch (e: Exception) {
                     Toast.makeText(this@AfegirDespesa, "Error en carregar les dades: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
-            }
+            }*/
         }
     }
 }

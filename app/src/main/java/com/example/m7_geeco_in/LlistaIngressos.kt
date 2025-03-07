@@ -33,7 +33,6 @@ class LlistaIngressos : AppCompatActivity() {
            val import = stringValue2?.toIntOrNull() ?: null
            fetchIngressosList(skip = 0, limit = 10,stringValue, import, stringValue3)
         } else {
-           //Toast.makeText(this@LlistaIngressos, "Aqui", Toast.LENGTH_SHORT).show()
            fetchIngressosList(skip = 0, limit = 10,null, null, null)
         }
         b1.setOnClickListener{
@@ -56,41 +55,41 @@ class LlistaIngressos : AppCompatActivity() {
             val importsString2 = "$importsString€"
 
             if(key == null && key2 == null && key3 == null){
-                data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
             }
             if(key == null && key2 != null && key3 == null){
                 if(ingres.amount == key2){
-                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                    data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
                 }
             }
             if(key != null && key2 == null && key3 == null){
                 if(ingres.title == key){
-                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                    data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
                 }
             }
             if(key == null && key2 == null && key3 != null){
                 if(ingres.date == key3){
-                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                    data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
                 }
             }
             if(key != null && key2 != null && key3 == null){
                 if(key == ingres.title && ingres.amount == key2){
-                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                    data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
                 }
             }
             if(key != null && key2 == null && key3 != null){
                 if(key == ingres.title && key3 == ingres.date){
-                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                    data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
                 }
             }
             if(key == null && key2 != null && key3 != null){
                 if(key2 == ingres.amount && ingres.date == key3){
-                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                    data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
                 }
             }
             else{
                 if(key == ingres.title && key2 == ingres.amount && key3 == ingres.date){
-                    data.add(ItemsView(R.drawable.money, ingres.title, importsString2))
+                    data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
                 }
             }
         }
