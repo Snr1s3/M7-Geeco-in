@@ -39,7 +39,7 @@
     <string name="sou_nadal">Sou de Nadal</string>
     <string name="descripcio">Descripció:</string>
     <string name="cuantitat">Quantitat:</string>
-    <string name="data">Data:</string>
+    <string name="data">Data (Format yyyy-mm-dd):</string>
     <string name="data_num">02/12/23</string>
     <string name="cuantitat_num">2305,31€</string>
     <string name="sou_nadal_doble">Sou de doble de nadal.</string>
