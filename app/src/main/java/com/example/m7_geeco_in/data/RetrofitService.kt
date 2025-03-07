@@ -3,9 +3,11 @@ package com.example.m7_geeco_in.data
 import com.example.m7_geeco_in.Despesses
 import com.example.m7_geeco_in.Ingressos
 import okhttp3.OkHttpClient
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -46,16 +48,19 @@ interface RetrofitService {
     ): List<Despesses>
 
     @GET("incomes/{income_id}")
-    suspend fun ingresId( @Path("income_id") idIngres:Int):Ingressos
-
-    @GET("expenses/{expenses_id}")
-    suspend fun despesaId( @Path("expanses_id") idDespesa:Int):Despesses
+    suspend fun llistaIngressos( @Path("income_id") idIngres:Int):List<Ingressos>
 
     @POST("incomes/")
     suspend fun postIngres(@Body request: IngresRequest): IngresRequest
 
     @POST("expenses/")
     suspend fun postExpanses(@Body request: DespesaRequest): DespesaRequest
+
+    @DELETE("incomes/{income_id}")
+    suspend fun deleteIngres(@Path("income_id") idIngres: Int): Response<Unit>
+
+    @DELETE("/expenses/{expense_id}")
+    suspend fun deleteExpese(@Path("expense_id") idExpese: Int): Response<Unit>
 }
 
 class geecoinAPI {
