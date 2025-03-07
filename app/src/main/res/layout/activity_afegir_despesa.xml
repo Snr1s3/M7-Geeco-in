@@ -18,7 +18,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout="@layout/fragment_top" />
 
-    <!-- Fragment superior -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_bottom"
         android:name="com.example.m7_geeco_in.fragment_bottom"

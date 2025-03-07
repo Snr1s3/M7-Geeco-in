@@ -7,6 +7,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -39,11 +40,12 @@ interface RetrofitService {
 
     @POST("incomes/")
     suspend fun postIngres(
-        @Field("title") title: String?,
-        @Field("description") description: String?,
-        @Field("amount") amount: Int?,
-        @Field("date") date: String?
+        @Body title: String?,
+        @Body description: String?,
+        @Body amount: Int?,
+        @Body date: String?
     ): Call<Ingressos>
+
 
     @POST("expenses/")
     suspend fun postDespese(
@@ -66,7 +68,7 @@ class geecoinAPI {
                 mAPI = Retrofit.Builder()
                     .client(unsafeClient)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("https://54.173.54.56:443")
+                    .baseUrl("https://54.173.54.56")
                     .build()
                     .create(RetrofitService::class.java)
             }

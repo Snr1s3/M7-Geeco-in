@@ -10,7 +10,16 @@
     tools:openDrawer="start">
 
 
-    <!-- Fragment superior -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_top"
+        android:name="com.example.m7_geeco_in.RetornTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_top" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_bottom"
         android:name="com.example.m7_geeco_in.fragment_bottom"
@@ -84,7 +93,7 @@
             app:layout_constraintTop_toBottomOf="@id/et_titol" />
 
         <EditText
-            android:id="@+id/et_descripion"
+            android:id="@+id/et_descripcio"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -105,10 +114,10 @@
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_descripion" />
+            app:layout_constraintTop_toBottomOf="@id/et_descripcio" />
 
         <EditText
-            android:id="@+id/et_cuantitat"
+            android:id="@+id/et_quantitat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -129,7 +138,7 @@
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_cuantitat" />
+            app:layout_constraintTop_toBottomOf="@id/et_quantitat" />
 
         <EditText
             android:id="@+id/et_data"
