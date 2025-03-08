@@ -25,14 +25,16 @@ class LlistaDespeses : AppCompatActivity() {
         val b1 = findViewById<Button>(R.id.button1)
         val b2 = findViewById<Button>(R.id.button2)
         val bundle = intent.extras
-        if (bundle != null && bundle.size() != 0) {
-            val stringValue = bundle.getString("fNom") ?: null
-            val stringValue2 = bundle.getString("fDiners") ?: null
-            val stringValue3 = bundle.getString("fData") ?: null
-            val import = stringValue2?.toIntOrNull() ?: null
-            fetchDespesesList(skip = 0, limit = 10,stringValue, import, stringValue3)
+        if (bundle != null && bundle.size() > 0) {
+            val stringValue2 = bundle.getString("fNom")
+            val stringValue = bundle.getString("fDiners")
+            val stringValue3 = bundle.getString("fData")
+            val despesa = stringValue2?.toIntOrNull()
+            //Toast.makeText(this, "fNom: $stringValue, fDiners: $stringValue2, fData: $stringValue3", Toast.LENGTH_SHORT).show()
+            fetchDespesesList(skip = 0, limit = 10, key = stringValue2, key2 = despesa, key3 = stringValue3)
         } else {
-            fetchDespesesList(skip = 0, limit = 10,null,null,null)
+            //Toast.makeText(this, "Sense Filtres", Toast.LENGTH_SHORT).show()
+            fetchDespesesList(skip = 0, limit = 10, key = null, key2 = null, key3 = null)
         }
 
         b1.setOnClickListener{
@@ -48,47 +50,26 @@ class LlistaDespeses : AppCompatActivity() {
     fun AddData(Despesses:List<Despesses>, key: String?, key2: Int?,key3: String?){
         val recyclerview = findViewById<RecyclerView>(R.id.recycler1)
         recyclerview.layoutManager = LinearLayoutManager(this)
+
         val data = ArrayList<ItemsView>()
         for (despesa in Despesses) {
-            val importsString = despesa.amount.toString()
-            val importsString2 = "$importsString€"
-            if(key == null && key2 == null && key3 == null){
-                data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
-            }
-            if(key == null && key2 != null && key3 == null){
-                if(despesa.amount == key2){
-                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
-                }
-            }
-            if(key != null && key2 == null && key3 == null){
-                if(despesa.title == key){
-                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
-                }
-            }
-            if(key == null && key2 == null && key3 != null){
-                if(despesa.date == key3){
-                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
-                }
-            }
-            if(key != null && key2 != null && key3 == null){
-                if(key == despesa.title && despesa.amount == key2){
-                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
-                }
-            }
-            if(key != null && key2 == null && key3 != null){
-                if(key == despesa.title && key3 == despesa.date){
-                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
-                }
-            }
-            if(key == null && key2 != null && key3 != null){
-                if(key2 ==despesa.amount && despesa.date == key3){
-                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
-                }
-            }
-            else{
-                if(key == despesa.title && key2 == despesa.amount && key3 == despesa.date){
-                    data.add(ItemsView(R.drawable.money,despesa.id, despesa.title, importsString2))
-                }
+            val importsString2 = "${despesa.amount}€"
+            if (key == null && key2 == null && key3 == null) {
+                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
+            } else if (key == null && key2 != null && key3 == null && despesa.amount == key2) {
+                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
+            } else if (key != null && key2 == null && key3 == null && despesa.title == key) {
+                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
+            } else if (key == null && key2 == null && key3 != null && despesa.date == key3) {
+                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
+            } else if (key != null && key2 != null && key3 == null && key == despesa.title && despesa.amount == key2) {
+                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
+            } else if (key != null && key2 == null && key3 != null && key == despesa.title && key3 == despesa.date) {
+                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
+            } else if (key == null && key2 != null && key3 != null && key2 ==despesa.amount && despesa.date == key3) {
+                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
+            } else if (key == despesa.title && key2 == despesa.amount && key3 == despesa.date) {
+                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
             }
         }
         val adapter = CustomAdapter(this, data)
@@ -99,8 +80,12 @@ class LlistaDespeses : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 expenses = geecoinAPI.API().getDespesesList(skip = skip, limit = limit)
-                AddData(expenses!!, key, key2, key3)
-                Toast.makeText(this@LlistaDespeses, "Data loaded successfully!", Toast.LENGTH_SHORT).show()
+                if (expenses != null) {
+                    AddData(expenses!!, key, key2, key3)
+                    Toast.makeText(this@LlistaDespeses, "Dades Carregades", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@LlistaDespeses, "No hi han dades disponibles", Toast.LENGTH_SHORT).show()
+                }
             }  catch (e: HttpException) {
                 println("HTTP Error: ${e.message}")
             } catch (e: IOException) {

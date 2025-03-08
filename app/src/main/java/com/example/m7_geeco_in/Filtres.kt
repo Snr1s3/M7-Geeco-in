@@ -5,15 +5,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class Filtres : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_filtres)
         val eT1 = findViewById<EditText>(R.id.editTextText)
         val eT2 = findViewById<EditText>(R.id.editTextText2)
@@ -25,21 +21,19 @@ class Filtres : AppCompatActivity() {
             val text2 = eT2.text.toString()
             val text1 = eT1.text.toString()
             val text3 = eT3.text.toString()
-            if(!text1.isBlank()){
+            if (text1.isNotBlank()) {
                 bundle.putString("fNom", text1)
-                intent.putExtras(bundle)
-                Toast.makeText(this, "Filtrant per:" +text1, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Filtrant per: $text1", Toast.LENGTH_SHORT).show()
             }
-            else if(!text2.isBlank()){
+            if (text2.isNotBlank()) {
                 bundle.putString("fDiners", text2)
-                intent.putExtras(bundle)
-                Toast.makeText(this, "Filtrant per:" +text2, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Filtrant per: $text2", Toast.LENGTH_SHORT).show()
             }
-            else if(!text3.isBlank()){
+            if (text3.isNotBlank()) {
                 bundle.putString("fData", text3)
-                intent.putExtras(bundle)
-                Toast.makeText(this, "Filtrant per:" +text3, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Filtrant per: $text3", Toast.LENGTH_SHORT).show()
             }
+            intent.putExtras(bundle)
             startActivity(intent)
         }
     }
