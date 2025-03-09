@@ -31,10 +31,10 @@ class LlistaIngressos : AppCompatActivity() {
             val stringValue3 = bundle.getString("fData")
             //Toast.makeText(this, "fNom: $stringValue, fDiners: $stringValue2, fData: $stringValue3", Toast.LENGTH_SHORT).show()
             val import = stringValue?.toIntOrNull()
-            fetchIngressosList(skip = 0, limit = 10, key = stringValue2, key2 = import, key3 = stringValue3)
+            fetchIngressosList(0, 30, stringValue2, import, stringValue3)
         } else {
             //Toast.makeText(this, "Sense Filtres", Toast.LENGTH_SHORT).show()
-            fetchIngressosList(skip = 0, limit = 10, key = null, key2 = null, key3 = null)
+            fetchIngressosList(0, 30, null, null, null)
         }
         b1.setOnClickListener{
             val intent = Intent(this@LlistaIngressos, Filtres::class.java)

@@ -26,15 +26,15 @@ class LlistaDespeses : AppCompatActivity() {
         val b2 = findViewById<Button>(R.id.button2)
         val bundle = intent.extras
         if (bundle != null && bundle.size() > 0) {
-            val stringValue2 = bundle.getString("fNom")
-            val stringValue = bundle.getString("fDiners")
+            val stringValue = bundle.getString("fNom")
+            val stringValue2 = bundle.getString("fDiners")
             val stringValue3 = bundle.getString("fData")
-            val despesa = stringValue2?.toIntOrNull()
+            val despesa = stringValue?.toIntOrNull()
             //Toast.makeText(this, "fNom: $stringValue, fDiners: $stringValue2, fData: $stringValue3", Toast.LENGTH_SHORT).show()
-            fetchDespesesList(skip = 0, limit = 10, key = stringValue2, key2 = despesa, key3 = stringValue3)
+            fetchDespesesList(0, 30, stringValue2, despesa, stringValue3)
         } else {
             //Toast.makeText(this, "Sense Filtres", Toast.LENGTH_SHORT).show()
-            fetchDespesesList(skip = 0, limit = 10, key = null, key2 = null, key3 = null)
+            fetchDespesesList(0, 30, null, null, null)
         }
 
         b1.setOnClickListener{
