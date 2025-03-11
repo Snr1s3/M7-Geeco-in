@@ -90,14 +90,14 @@ class modificar_despesa : AppCompatActivity() {
     }
     fun addData(despesa: Despesses) {
         val t = findViewById<EditText>(R.id.et_titol)
-        val descr = findViewById<EditText>(R.id.et_descripcio)
+        val descr = findViewById<EditText>(R.id.et_descripion)
         val q = findViewById<EditText>(R.id.et_cuantitat)
         val data = findViewById<EditText>(R.id.et_data)
         t.setText(despesa.title)
-        //descr.setText(income.desc ?: "No Description")
+        descr.setText(despesa.description)
         q.setText(String.format(Locale.getDefault(), "%,d", despesa.amount))
-        data.setText(despesa.date ?: "No Date")
-        Log.d("ModificarDespesa", "Title: ${despesa.title}, Desc: ${despesa.desc}, Amount: ${despesa.amount}, Date: ${despesa.date}")
+        data.setText(despesa.date)
+        Log.d("ModificarDespesa", "Title: ${despesa.title}, Desc: ${despesa.description}, Amount: ${despesa.amount}, Date: ${despesa.date}")
     }
     fun updateDespesa(despesaId: Int) {
         val api = geecoinAPI.API()

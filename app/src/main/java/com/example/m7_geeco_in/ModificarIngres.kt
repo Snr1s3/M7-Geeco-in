@@ -80,13 +80,13 @@ class ModificarIngres : AppCompatActivity() {
     }
     fun addData(income: Ingressos) {
         val t = findViewById<EditText>(R.id.et_titol)
-        val descr = findViewById<EditText>(R.id.et_descripcio)
+        val descr = findViewById<EditText>(R.id.et_descripion)
         val q = findViewById<EditText>(R.id.et_cuantitat)
         val data = findViewById<EditText>(R.id.et_data)
         t.setText(income.title)
-        //descr.setText(income.desc ?: "No Description")
+        descr.setText(income.description)
         q.setText(String.format(Locale.getDefault(), "%,d", income.amount))
-        data.setText(income.date ?: "No Date")
-        Log.d("ModificarIngres", "Title: ${income.title}, Desc: ${income.desc}, Amount: ${income.amount}, Date: ${income.date}")
+        data.setText(income.date)
+        Log.d("ModificarIngres", "Title: ${income.title}, Desc: ${income.description}, Amount: ${income.amount}, Date: ${income.date}")
     }
 }

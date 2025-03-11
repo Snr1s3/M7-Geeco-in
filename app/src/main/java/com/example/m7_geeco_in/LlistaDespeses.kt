@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 
-data class Despesses(val title:String, val desc:String, val amount:Int, val date:String, val id:Int)
+data class Despesses(val title:String, val description:String, val amount:Int, val date:String, val id:Int)
 
 class LlistaDespeses : AppCompatActivity() {
 
