@@ -110,6 +110,7 @@ class modificar_despesa : AppCompatActivity() {
         val updatedDespesa = DespesaRequest(title, description, amount, date)
 
         lifecycleScope.launch {
+
             try {
                 val response = api.updateDespesa(despesaId, updatedDespesa)
                 if (response.isSuccessful) {
