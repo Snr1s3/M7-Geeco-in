@@ -12,6 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.PUT
 import java.security.SecureRandom
 import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
@@ -46,6 +47,12 @@ interface RetrofitService {
         @Query("skip") skip: Int,
         @Query("limit") limit: Int
     ): List<Despesses>
+
+    @PUT("expenses/{expense_id}")
+    suspend fun updateDespesa(
+        @Path("expense_id") idDespesa: Int,
+        @Body request: DespesaRequest
+    ): Response<DespesaRequest>
 
     @GET("incomes/{income_id}")
     suspend fun ingresId( @Path("income_id") idIngres:Int):Ingressos

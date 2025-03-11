@@ -7,16 +7,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.m7_geeco_in.data.DespesaRequest
-import com.example.m7_geeco_in.data.IngresRequest
 import com.example.m7_geeco_in.data.geecoinAPI
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class AfegirDespesa : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

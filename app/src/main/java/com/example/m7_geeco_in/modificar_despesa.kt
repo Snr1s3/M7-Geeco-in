@@ -38,6 +38,11 @@ class modificar_despesa : AppCompatActivity() {
             }
         }
         b1.setOnClickListener {
+            if (itemId != -1) {
+                updateDespesa(itemId)
+            } else {
+                Toast.makeText(this, "ID de despesa no vàlid", Toast.LENGTH_SHORT).show()
+            }
             val intent = Intent(this@modificar_despesa, LlistaDespeses::class.java)
             startActivity(intent)
         }
@@ -92,5 +97,30 @@ class modificar_despesa : AppCompatActivity() {
         q.setText(String.format(Locale.getDefault(), "%,d", despesa.amount))
         data.setText(despesa.date ?: "No Date")
         Log.d("ModificarDespesa", "Title: ${despesa.title}, Desc: ${despesa.desc}, Amount: ${despesa.amount}, Date: ${despesa.date}")
+    }
+    fun updateDespesa(despesaId: Int) {
+        val api = geecoinAPI.API()
+
+        val title = findViewById<EditText>(R.id.et_titol).text.toString()
+        val description = findViewById<EditText>(R.id.et_descripcio).text.toString()
+        val amount = findViewById<EditText>(R.id.et_cuantitat).text.toString().toIntOrNull() ?: 0
+        val date = findViewById<EditText>(R.id.et_data).text.toString()
+
+        val updatedDespesa = DespesaRequest(title, description, amount, date)
+
+        lifecycleScope.launch {
+            try {
+                val response = api.updateDespesa(despesaId, updatedDespesa)
+                if (response.isSuccessful) {
+                    Toast.makeText(this@modificar_despesa, "Despesa actualitzada amb èxit", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@modificar_despesa, LlistaDespeses::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this@modificar_despesa, "Error al actualitzar la despesa", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this@modificar_despesa, "Error de xarxa: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
