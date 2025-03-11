@@ -15,7 +15,7 @@ import java.io.IOException
 
 // import com.example.recyclerview.reserves.ReservesAPI
 
-data class Ingressos(val title:String, val desc:String, val amount:Int, val date:String, val id:Int)
+data class Ingressos(val title:String, val description:String, val amount:Int, val date:String, val id:Int)
 
 class LlistaIngressos : AppCompatActivity() {
     private  var incomes: List<Ingressos>? = listOf()

@@ -10,6 +10,7 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 import java.security.SecureRandom
@@ -64,6 +65,12 @@ interface RetrofitService {
 
     @DELETE("/expenses/{expense_id}")
     suspend fun deleteExpese(@Path("expense_id") idExpese: Int): Response<Unit>
+
+    @PUT("incomes/{income_id}")
+    suspend fun updateIngres(@Path("income_id") idIngres: Int, @Body request: IngresRequest): Ingressos
+
+    @PUT("expenses/{expense_id}")
+    suspend fun updateExpese(@Path("expense_id") idExpese: Int, @Body request: DespesaRequest): Despesses
 }
 
 class geecoinAPI {
