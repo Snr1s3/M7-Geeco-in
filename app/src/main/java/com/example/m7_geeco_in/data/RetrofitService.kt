@@ -50,9 +50,10 @@ interface RetrofitService {
 
     @PUT("expenses/{expense_id}")
     suspend fun updateDespesa(
-        @Path("expense_id") idDespesa: Int,
+        @Path("expense_id") id: Int,
         @Body request: DespesaRequest
-    ): Response<DespesaRequest>
+    ): Response<Despesses>
+
 
     @GET("incomes/{income_id}")
     suspend fun ingresId( @Path("income_id") idIngres:Int):Ingressos
@@ -91,7 +92,7 @@ class geecoinAPI {
                 mAPI = Retrofit.Builder()
                     .client(unsafeClient)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("https://54.173.54.56")
+                    .baseUrl("https://54.173.54.56/")
                     .build()
                     .create(RetrofitService::class.java)
             }

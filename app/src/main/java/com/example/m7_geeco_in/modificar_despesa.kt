@@ -103,7 +103,7 @@ class modificar_despesa : AppCompatActivity() {
         val api = geecoinAPI.API()
 
         val title = findViewById<EditText>(R.id.et_titol).text.toString()
-        val description = findViewById<EditText>(R.id.et_descripcio).text.toString()
+        val description = findViewById<EditText>(R.id.et_descripion).text.toString()
         val amount = findViewById<EditText>(R.id.et_cuantitat).text.toString().toIntOrNull() ?: 0
         val date = findViewById<EditText>(R.id.et_data).text.toString()
 
@@ -114,10 +114,10 @@ class modificar_despesa : AppCompatActivity() {
                 val response = api.updateDespesa(despesaId, updatedDespesa)
                 if (response.isSuccessful) {
                     Toast.makeText(this@modificar_despesa, "Despesa actualitzada amb èxit", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@modificar_despesa, LlistaDespeses::class.java))
-                    finish()
                 } else {
-                    Toast.makeText(this@modificar_despesa, "Error al actualitzar la despesa", Toast.LENGTH_SHORT).show()
+                    val errorMessage = response.errorBody()?.string() ?: "Error desconegut"
+                    Toast.makeText(this@modificar_despesa, "Error: $errorMessage", Toast.LENGTH_SHORT).show()
+                    Log.e("ModificarDespesa", "Error: $errorMessage")
                 }
             } catch (e: Exception) {
                 Toast.makeText(this@modificar_despesa, "Error de xarxa: ${e.message}", Toast.LENGTH_SHORT).show()
