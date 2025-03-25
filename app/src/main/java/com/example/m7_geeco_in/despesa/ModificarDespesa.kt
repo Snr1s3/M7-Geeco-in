@@ -1,4 +1,4 @@
-package com.example.m7_geeco_in
+package com.example.m7_geeco_in.despesa
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,11 +8,12 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.m7_geeco_in.data.DespesaRequest
+import com.example.m7_geeco_in.R
+import com.example.m7_geeco_in.models.DespesaRequest
+import com.example.m7_geeco_in.models.Despesses
 import com.example.m7_geeco_in.data.geecoinAPI
+import com.example.m7_geeco_in.screen.MenuAndroid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,8 +24,9 @@ class modificar_despesa : AppCompatActivity() {
     private lateinit var despesa: Despesses
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_modificar_despesa)
         enableEdgeToEdge()
+        MenuAndroid(window).hideSystemBar()
+        setContentView(R.layout.activity_modificar_despesa)
         val b1 = findViewById<Button>(R.id.b1)
         val deleteButton = findViewById<Button>(R.id.b2)
         val itemId = intent.getIntExtra("ITEM_ID", -1)

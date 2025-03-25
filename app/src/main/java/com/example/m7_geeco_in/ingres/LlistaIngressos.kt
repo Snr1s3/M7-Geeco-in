@@ -1,26 +1,34 @@
-package com.example.m7_geeco_in
+package com.example.m7_geeco_in.ingres
 
 import android.os.Bundle
 import android.content.Intent
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.m7_geeco_in.data.geecoinAPI
 import retrofit2.HttpException // Keep this one
 import androidx.lifecycle.lifecycleScope
+import com.example.m7_geeco_in.R
+import com.example.m7_geeco_in.models.Ingressos
+import com.example.m7_geeco_in.recycler.CustomAdapter
+import com.example.m7_geeco_in.recycler.ItemsView
+import com.example.m7_geeco_in.screen.MenuAndroid
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 // import com.example.recyclerview.reserves.ReservesAPI
 
-data class Ingressos(val title:String, val description:String, val amount:Int, val date:String, val id:Int)
+
 
 class LlistaIngressos : AppCompatActivity() {
     private  var incomes: List<Ingressos>? = listOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        MenuAndroid(window).hideSystemBar()
         setContentView(R.layout.activity_llista_ingressos)
         val b1 = findViewById<Button>(R.id.button1)
         val b2 = findViewById<Button>(R.id.button2)
@@ -53,21 +61,11 @@ class LlistaIngressos : AppCompatActivity() {
         val data = ArrayList<ItemsView>()
         for (ingres in ingressos) {
             val importsString2 = "${ingres.amount}€"
-            if (key == null && key2 == null && key3 == null) {
-                data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
-            } else if (key == null && key2 != null && key3 == null && ingres.amount == key2) {
-                data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
-            } else if (key != null && key2 == null && key3 == null && ingres.title == key) {
-                data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
-            } else if (key == null && key2 == null && key3 != null && ingres.date == key3) {
-                data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
-            } else if (key != null && key2 != null && key3 == null && key == ingres.title && ingres.amount == key2) {
-                data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
-            } else if (key != null && key2 == null && key3 != null && key == ingres.title && key3 == ingres.date) {
-                data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
-            } else if (key == null && key2 != null && key3 != null && key2 == ingres.amount && ingres.date == key3) {
-                data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
-            } else if (key == ingres.title && key2 == ingres.amount && key3 == ingres.date) {
+            val matchTitle = key == null || ingres.title == key
+            val matchAmount = key2 == null || ingres.amount == key2
+            val matchDate = key3 == null || ingres.date == key3
+
+            if (matchTitle && matchAmount && matchDate) {
                 data.add(ItemsView(R.drawable.money, ingres.id, ingres.title, importsString2))
             }
         }

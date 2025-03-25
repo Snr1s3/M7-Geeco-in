@@ -1,15 +1,20 @@
-package com.example.m7_geeco_in
+package com.example.m7_geeco_in.despesa
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.m7_geeco_in.R
+import com.example.m7_geeco_in.screen.MenuAndroid
 
 class FiltresDespeses : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        MenuAndroid(window).hideSystemBar()
         setContentView(R.layout.activity_filtres_despeses)
         val eT1 = findViewById<EditText>(R.id.editTextText)
         val eT2 = findViewById<EditText>(R.id.editTextText2)

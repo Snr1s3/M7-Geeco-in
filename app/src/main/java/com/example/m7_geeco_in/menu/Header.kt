@@ -1,15 +1,24 @@
-package com.example.m7_geeco_in
+package com.example.m7_geeco_in.menu
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.m7_geeco_in.inicisessio.Login
+import com.example.m7_geeco_in.R
+import com.example.m7_geeco_in.inicisessio.Ajuda
+import com.example.m7_geeco_in.inicisessio.IniciSessio
+import com.example.m7_geeco_in.despesa.LlistaDespeses
+import com.example.m7_geeco_in.ingres.LlistaIngressos
+import com.example.m7_geeco_in.preferencies.Preferencies
+import com.example.m7_geeco_in.screen.MenuAndroid
 import com.google.android.material.navigation.NavigationView
 
 class Header : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -20,6 +29,8 @@ class Header : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        MenuAndroid(window).hideSystemBar()
         setContentView(R.layout.activity_inicial)
         drawerLayout = findViewById(R.id.main2)
         navigationView = findViewById(R.id.nv_ejemplo)
@@ -74,7 +85,7 @@ class Header : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
             val intent = Intent(this@Header, IniciSessio::class.java)
             startActivity(intent)
         } else if (itemId == R.id.logout) {
-            val intent = Intent(this@Header, MainActivity::class.java)
+            val intent = Intent(this@Header, Login::class.java)
             startActivity(intent)
         } else {
             Toast.makeText(this, "Invalid option", Toast.LENGTH_SHORT).show();

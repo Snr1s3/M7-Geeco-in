@@ -1,19 +1,25 @@
-package com.example.m7_geeco_in
+package com.example.m7_geeco_in.despesa
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.m7_geeco_in.R
 import com.example.m7_geeco_in.data.geecoinAPI
+import com.example.m7_geeco_in.models.Despesses
+import com.example.m7_geeco_in.recycler.CustomAdapter
+import com.example.m7_geeco_in.recycler.ItemsView
+import com.example.m7_geeco_in.screen.MenuAndroid
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 
-data class Despesses(val title:String, val description:String, val amount:Int, val date:String, val id:Int)
+
 
 class LlistaDespeses : AppCompatActivity() {
 
@@ -21,6 +27,8 @@ class LlistaDespeses : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        MenuAndroid(window).hideSystemBar()
         setContentView(R.layout.activity_llista_despeses)
         val b1 = findViewById<Button>(R.id.button1)
         val b2 = findViewById<Button>(R.id.button2)
@@ -54,21 +62,11 @@ class LlistaDespeses : AppCompatActivity() {
         val data = ArrayList<ItemsView>()
         for (despesa in Despesses) {
             val importsString2 = "${despesa.amount}€"
-            if (key == null && key2 == null && key3 == null) {
-                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
-            } else if (key == null && key2 != null && key3 == null && despesa.amount == key2) {
-                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
-            } else if (key != null && key2 == null && key3 == null && despesa.title == key) {
-                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
-            } else if (key == null && key2 == null && key3 != null && despesa.date == key3) {
-                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
-            } else if (key != null && key2 != null && key3 == null && key == despesa.title && despesa.amount == key2) {
-                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
-            } else if (key != null && key2 == null && key3 != null && key == despesa.title && key3 == despesa.date) {
-                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
-            } else if (key == null && key2 != null && key3 != null && key2 ==despesa.amount && despesa.date == key3) {
-                data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
-            } else if (key == despesa.title && key2 == despesa.amount && key3 == despesa.date) {
+            val matchTitle = key == null || despesa.title == key
+            val matchAmount = key2 == null || despesa.amount == key2
+            val matchDate = key3 == null || despesa.date == key3
+
+            if (matchTitle && matchAmount && matchDate) {
                 data.add(ItemsView(R.drawable.money, despesa.id, despesa.title, importsString2))
             }
         }
