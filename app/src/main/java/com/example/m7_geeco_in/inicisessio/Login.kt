@@ -1,4 +1,4 @@
-package com.example.m7_geeco_in
+package com.example.m7_geeco_in.inicisessio
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,14 +6,16 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.m7_geeco_in.R
+import com.example.m7_geeco_in.fragments.fragment_top
+import com.example.m7_geeco_in.screen.MenuAndroid
 
-class MainActivity : AppCompatActivity() {
+class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        MenuAndroid(window).hideSystemBar()
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -22,17 +24,17 @@ class MainActivity : AppCompatActivity() {
         }
         val button = findViewById<Button>(R.id.isBoto)
         button.setOnClickListener {
-            val intent = Intent(this@MainActivity, IniciSessio::class.java)
+            val intent = Intent(this@Login, IniciSessio::class.java)
             startActivity(intent)
         }
         val b2 = findViewById<Button>(R.id.but2)
         b2.setOnClickListener {
-            val intent = Intent(this@MainActivity, Ajuda::class.java)
+            val intent = Intent(this@Login, Ajuda::class.java)
             startActivity(intent)
         }
         val txt= findViewById<TextView>(R.id.cCT)
         txt.setOnClickListener {
-            val intent = Intent(this@MainActivity, activity_registre::class.java)
+            val intent = Intent(this@Login, activity_registre::class.java)
             startActivity(intent)
         }
 

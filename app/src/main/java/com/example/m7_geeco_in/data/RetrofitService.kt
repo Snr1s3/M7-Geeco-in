@@ -1,7 +1,9 @@
 package com.example.m7_geeco_in.data
 
-import com.example.m7_geeco_in.Despesses
-import com.example.m7_geeco_in.Ingressos
+import com.example.m7_geeco_in.models.Despesses
+import com.example.m7_geeco_in.models.Ingressos
+import com.example.m7_geeco_in.models.DespesaRequest
+import com.example.m7_geeco_in.models.IngresRequest
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -20,20 +22,6 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLSocketFactory
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
-
-data class IngresRequest(
-    val title: String,
-    val description: String,
-    val amount: Int,
-    val date: String
-)
-
-data class DespesaRequest(
-    val title: String,
-    val description: String,
-    val amount: Int,
-    val date: String
-)
 
 interface RetrofitService {
     @GET("incomes/")

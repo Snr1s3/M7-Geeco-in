@@ -15,46 +15,46 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".modificar_despesa"
+            android:name=".despesa.modificar_despesa"
             android:exported="false" />
         <activity
-            android:name=".AfegirDespesa"
+            android:name=".despesa.AfegirDespesa"
             android:exported="false" />
         <activity
-            android:name=".FiltresDespeses"
+            android:name=".despesa.FiltresDespeses"
             android:exported="false" />
         <activity
-            android:name=".LlistaDespeses"
+            android:name=".despesa.LlistaDespeses"
             android:exported="false" />
         <activity
-            android:name=".ModificarIngres"
+            android:name=".ingres.ModificarIngres"
             android:exported="false" />
         <activity
-            android:name=".Header"
+            android:name=".menu.Header"
             android:exported="false" />
         <activity
-            android:name=".AfegirIngres"
+            android:name=".ingres.AfegirIngres"
             android:exported="false" />
         <activity
-            android:name=".Filtres"
+            android:name=".ingres.Filtres"
             android:exported="false" />
         <activity
-            android:name=".Ajuda"
+            android:name=".inicisessio.Ajuda"
             android:exported="false" />
         <activity
-            android:name=".LlistaIngressos"
+            android:name=".ingres.LlistaIngressos"
             android:exported="false" />
         <activity
-            android:name=".Preferencies"
+            android:name=".preferencies.Preferencies"
             android:exported="false" />
         <activity
-            android:name=".activity_registre"
+            android:name=".inicisessio.activity_registre"
             android:exported="false" />
         <activity
-            android:name=".IniciSessio"
+            android:name=".inicisessio.IniciSessio"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".inicisessio.Login"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

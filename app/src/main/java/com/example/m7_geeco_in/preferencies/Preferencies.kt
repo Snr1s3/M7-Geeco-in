@@ -1,17 +1,19 @@
-package com.example.m7_geeco_in
+package com.example.m7_geeco_in.preferencies
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.m7_geeco_in.R
+import com.example.m7_geeco_in.ingres.LlistaIngressos
+import com.example.m7_geeco_in.screen.MenuAndroid
 
 class Preferencies : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        MenuAndroid(window).hideSystemBar()
         setContentView(R.layout.activity_preferencies)
         val b1 = findViewById<Button>(R.id.button)
         b1.setOnClickListener{

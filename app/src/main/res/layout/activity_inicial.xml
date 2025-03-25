@@ -5,7 +5,7 @@
     android:id="@+id/main2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Header"
+    tools:context=".menu.Header"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
@@ -26,7 +26,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".AfegirIngres"
+            tools:context=".ingres.AfegirIngres"
             android:fitsSystemWindows="true">
 
             <!-- Toolbar -->
@@ -89,7 +89,7 @@
         android:layout_height="match_parent">
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_bottom"
-            android:name="com.example.m7_geeco_in.fragment_bottom"
+            android:name="com.example.m7_geeco_in.fragments.fragment_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

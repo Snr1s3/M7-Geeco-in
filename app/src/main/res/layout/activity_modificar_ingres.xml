@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ModificarIngres">
+    tools:context=".ingres.ModificarIngres">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_top"
-        android:name="com.example.m7_geeco_in.RetornTop"
+        android:name="com.example.m7_geeco_in.fragments.RetornTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +20,7 @@
     <!-- Fragment superior -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_bottom"
-        android:name="com.example.m7_geeco_in.fragment_bottom"
+        android:name="com.example.m7_geeco_in.fragments.fragment_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
