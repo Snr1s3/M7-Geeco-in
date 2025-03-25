@@ -1,4 +1,4 @@
-package com.example.m7_geeco_in
+package com.example.m7_geeco_in.recycler
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.m7_geeco_in.despesa.LlistaDespeses
+import com.example.m7_geeco_in.ingres.LlistaIngressos
+import com.example.m7_geeco_in.R
+import com.example.m7_geeco_in.ingres.ModificarIngres
+import com.example.m7_geeco_in.despesa.modificar_despesa
 
 class CustomAdapter(private val context: Context, private val mList: List<ItemsView>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 

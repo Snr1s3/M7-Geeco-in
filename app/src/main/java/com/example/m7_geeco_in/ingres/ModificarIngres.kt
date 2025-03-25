@@ -1,4 +1,4 @@
-package com.example.m7_geeco_in
+package com.example.m7_geeco_in.ingres
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,11 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.m7_geeco_in.data.DespesaRequest
-import com.example.m7_geeco_in.data.IngresRequest
+import com.example.m7_geeco_in.R
 import com.example.m7_geeco_in.data.geecoinAPI
+import com.example.m7_geeco_in.models.IngresRequest
+import com.example.m7_geeco_in.models.Ingressos
+import com.example.m7_geeco_in.screen.MenuAndroid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,6 +24,7 @@ class ModificarIngres : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        MenuAndroid(window).hideSystemBar()
         setContentView(R.layout.activity_modificar_ingres)
         val b1 = findViewById<Button>(R.id.b1)
         val deleteButton = findViewById<Button>(R.id.b2)

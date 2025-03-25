@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.m7_geeco_in.inicisessio.Login
 
 class SplashActivity : AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
         // Configurar un temporizador de 2 segundos
         Handler().postDelayed({
             // Iniciar MainActivity después de 2 segundos
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
             finish()
         }, 2000) // 2000 milisegundos = 2 segundos

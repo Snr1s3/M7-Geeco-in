@@ -1,19 +1,19 @@
-package com.example.m7_geeco_in
+package com.example.m7_geeco_in.inicisessio
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.m7_geeco_in.R
+import com.example.m7_geeco_in.screen.MenuAndroid
 
 class Ajuda : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_ajuda)
-
+        MenuAndroid(window).hideSystemBar()
         val b1 = findViewById<Button>(R.id.b1)
         b1.setOnClickListener {
             val intent = Intent(this@Ajuda, IniciSessio::class.java)
@@ -28,7 +28,7 @@ class Ajuda : AppCompatActivity() {
 
         val b3 = findViewById<Button>(R.id.b3)
         b3.setOnClickListener {
-            val intent = Intent(this@Ajuda, MainActivity::class.java)
+            val intent = Intent(this@Ajuda, Login::class.java)
             startActivity(intent)
         }
     }
