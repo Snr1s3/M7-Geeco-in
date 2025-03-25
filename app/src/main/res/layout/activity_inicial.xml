@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Header"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <!-- Navigation Drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/nv_ejemplo"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/menu"
+        android:layout_gravity="start" />
+
+    <!-- Main Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".AfegirIngres"
+            android:fitsSystemWindows="true">
+
+            <!-- Toolbar -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/md_theme_primaryContainer"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="75dp"
+            android:textSize="45sp"
+            android:text="@string/question"
+            android:gravity="center"
+            android:layout_marginBottom="50dp"/>
+        <Button
+            android:id="@+id/bingresos"
+            android:layout_width="300dp"
+            android:layout_height="75dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/ingresos"
+            android:textSize="30sp"
+            android:layout_marginBottom="50dp"/>
+
+        <Button
+            android:id="@+id/bdespese"
+            android:layout_width="300dp"
+            android:layout_height="75dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/despeses_"
+            android:textSize="30sp"
+            android:layout_marginBottom="50dp"/>
+
+        <Button
+            android:id="@+id/bobjectius"
+            android:layout_width="300dp"
+            android:layout_height="75dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/objectius"
+            android:backgroundTint="@color/md_theme_outline"
+            android:textSize="30sp" />
+    </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_bottom"
+            android:name="com.example.m7_geeco_in.fragment_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout="@layout/fragment_bottom" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

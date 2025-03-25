@@ -7,16 +7,16 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class Filtres : AppCompatActivity() {
+class FiltresDespeses : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_filtres)
+        setContentView(R.layout.activity_filtres_despeses)
         val eT1 = findViewById<EditText>(R.id.editTextText)
         val eT2 = findViewById<EditText>(R.id.editTextText2)
         val eT3 = findViewById<EditText>(R.id.editTextText3)
         val b1 = findViewById<Button>(R.id.button1)
         b1.setOnClickListener{
-            val intent = Intent(this@Filtres, LlistaIngressos::class.java)
+            val intent = Intent(this@FiltresDespeses, LlistaDespeses::class.java)
             val bundle = Bundle()
             val text2 = eT2.text.toString()
             val text1 = eT1.text.toString()

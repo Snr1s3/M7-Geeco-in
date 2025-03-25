@@ -25,9 +25,17 @@ class CustomAdapter(private val context: Context, private val mList: List<ItemsV
         holder.imageView.setImageResource(ItemsViewModel.image)
 
         holder.textView.text = ItemsViewModel.text
+        holder.textView2.text = ItemsViewModel.euro
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, ModificarIngres::class.java)
-            context.startActivity(intent)
+            val intent = when (context) {
+                is LlistaIngressos -> Intent(context, ModificarIngres::class.java)
+                is LlistaDespeses -> Intent(context, modificar_despesa::class.java)
+                else -> null
+            }
+            intent?.let {
+                it.putExtra("ITEM_ID", ItemsViewModel.id) // Pass the ID
+                context.startActivity(it)
+            }
         }
 
     }
@@ -39,6 +47,7 @@ class CustomAdapter(private val context: Context, private val mList: List<ItemsV
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageview)
         val textView: TextView = itemView.findViewById(R.id.textView)
+        val textView2: TextView = itemView.findViewById(R.id.textView3)
     }
 }
 

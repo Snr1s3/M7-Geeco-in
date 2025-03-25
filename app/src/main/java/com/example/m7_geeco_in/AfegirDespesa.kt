@@ -8,15 +8,11 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.m7_geeco_in.data.DespesaRequest
 import com.example.m7_geeco_in.data.geecoinAPI
-import com.example.m7_geeco_in.data.IngresRequest
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-
-class AfegirIngres : AppCompatActivity() {
+class AfegirDespesa : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,34 +29,31 @@ class AfegirIngres : AppCompatActivity() {
             val description = descripcio.text.toString().trim()
             val amount = quantitat.text.toString().toIntOrNull()
             val date = data.text.toString().trim()
-
             if (title.isBlank() || description.isBlank() || amount == null || date.isBlank()) {
-                Toast.makeText(this, "Si us plau, ompli tots els camps correctament.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Si us plau, ompli tots els camps.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             b1.isEnabled = false
 
             lifecycleScope.launch {
                 try {
                     val api = geecoinAPI.API()
-                    val request = IngresRequest(title, description, amount, date)
-                    val response = api.postIngres(request)
+                    val request = DespesaRequest(title, description, amount, date)
+                    val response = api.postExpanses(request)
 
                     if (response != null) {
-                        Toast.makeText(this@AfegirIngres, "Ingrés creat correctament.", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@AfegirIngres, LlistaIngressos::class.java))
+                        Toast.makeText(this@AfegirDespesa,"Despesa creada correctament.", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@AfegirDespesa, LlistaDespeses::class.java))
                         finish()
                     } else {
-                        Toast.makeText(this@AfegirIngres, "Error en la resposta del servidor.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AfegirDespesa, "Error en la resposta del servidor.", Toast.LENGTH_SHORT).show()
                     }
                 } catch (e: Exception) {
-                    Toast.makeText(this@AfegirIngres, "Error de connexió: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AfegirDespesa,"Error de connexió: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
                 } finally {
-                    b1.isEnabled = true  // Rehabilitar el botó en qualsevol cas
+                    b1.isEnabled = true
                 }
             }
         }
-
     }
 }

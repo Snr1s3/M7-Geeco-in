@@ -6,10 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".AfegirIngres"
-    tools:openDrawer="start">
-
-
+    tools:context=".modificar_despesa">
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_top"
         android:name="com.example.m7_geeco_in.RetornTop"
@@ -20,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout="@layout/fragment_top" />
 
+    <!-- Fragment superior -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_bottom"
         android:name="com.example.m7_geeco_in.fragment_bottom"
@@ -49,7 +47,7 @@
             android:layout_marginTop="36dp"
             android:fontFamily="@font/roboto"
             android:paddingBottom="10dp"
-            android:text="Afegir"
+            android:text="@string/modificar"
             android:textColor="@color/md_theme_onSecondaryContainer"
             android:textSize="35sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto"
-            android:hint="@string/titol"
+            android:text="@string/sou_nadal"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,12 +91,12 @@
             app:layout_constraintTop_toBottomOf="@id/et_titol" />
 
         <EditText
-            android:id="@+id/et_descripcio"
+            android:id="@+id/et_descripion"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto"
-            android:hint="@string/descripcio"
+            android:text="@string/sou_nadal_doble"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -114,15 +112,15 @@
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_descripcio" />
+            app:layout_constraintTop_toBottomOf="@id/et_descripion" />
 
         <EditText
-            android:id="@+id/et_quantitat"
+            android:id="@+id/et_cuantitat"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto"
-            android:hint="@string/cuantitat"
+            android:text="@string/cuantitat_num"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -138,7 +136,7 @@
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_quantitat" />
+            app:layout_constraintTop_toBottomOf="@id/et_cuantitat" />
 
         <EditText
             android:id="@+id/et_data"
@@ -146,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto"
-            android:hint="@string/data"
+            android:text="@string/data_num"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -156,15 +154,29 @@
             android:id="@+id/b1"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="96dp"
             android:fontFamily="@font/roboto"
             android:text="@string/guarda"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/b2"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_data"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="96dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/esborrar"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/b1"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintTop_toBottomOf="@+id/et_data"
             app:layout_constraintVertical_bias="0.0" />
 

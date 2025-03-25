@@ -20,7 +20,7 @@ class IniciSessio : AppCompatActivity() {
         }
         val button = findViewById<Button>(R.id.loginButton)
         button.setOnClickListener{
-            val intent = Intent(this@IniciSessio, LlistaIngressos::class.java)
+            val intent = Intent(this@IniciSessio, Header::class.java)
             startActivity(intent)
         }
     }
