@@ -57,7 +57,7 @@ class AfegirIngres : AppCompatActivity() {
                 } catch (e: Exception) {
                     Toast.makeText(this@AfegirIngres, "Error de connexió: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
                 } finally {
-                    b1.isEnabled = true  // Rehabilitar el botó en qualsevol cas
+                    b1.isEnabled = true
                 }
             }
         }

@@ -2,7 +2,9 @@ package com.example.m7_geeco_in.ingres
 
 import android.os.Bundle
 import android.content.Intent
+import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import com.example.m7_geeco_in.data.geecoinAPI
 import retrofit2.HttpException // Keep this one
 import androidx.lifecycle.lifecycleScope
 import com.example.m7_geeco_in.R
+import com.example.m7_geeco_in.fragments.Loading
 import com.example.m7_geeco_in.models.Ingressos
 import com.example.m7_geeco_in.recycler.CustomAdapter
 import com.example.m7_geeco_in.recycler.ItemsView
@@ -25,6 +28,7 @@ import java.io.IOException
 
 class LlistaIngressos : AppCompatActivity() {
     private  var incomes: List<Ingressos>? = listOf()
+    private val loadingFragment = Loading()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,6 +36,9 @@ class LlistaIngressos : AppCompatActivity() {
         setContentView(R.layout.activity_llista_ingressos)
         val b1 = findViewById<Button>(R.id.button1)
         val b2 = findViewById<Button>(R.id.button2)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.loading_container, loadingFragment)
+            .commit()
         val bundle = intent.extras
         if (bundle != null && bundle.size() > 0) {
             val stringValue = bundle.getString("fNom")
@@ -77,6 +84,11 @@ class LlistaIngressos : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 incomes = geecoinAPI.API().getIngressosList(skip = skip, limit = limit)
+                supportFragmentManager.beginTransaction()
+                    .remove(loadingFragment)
+                    .commit()
+                findViewById<FrameLayout>(R.id.loading_container).visibility = View.GONE
+                findViewById<RecyclerView>(R.id.recycler1).visibility= View.VISIBLE
                 if (incomes != null) {
                     AddData(incomes!!, key, key2, key3)
                     Toast.makeText(this@LlistaIngressos, "Dades Carregades", Toast.LENGTH_SHORT).show()
