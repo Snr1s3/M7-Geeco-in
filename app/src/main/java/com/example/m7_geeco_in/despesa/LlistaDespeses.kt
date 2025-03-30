@@ -8,8 +8,6 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -63,7 +61,7 @@ class LlistaDespeses : AppCompatActivity() {
         }
     }
 
-    fun AddData(Despesses:List<Despesses>, key: String?, key2: Int?,key3: String?){
+    private fun AddData(Despesses:List<Despesses>, key: String?, key2: Int?,key3: String?){
         val recyclerview = findViewById<RecyclerView>(R.id.recycler1)
         recyclerview.layoutManager = LinearLayoutManager(this)
 

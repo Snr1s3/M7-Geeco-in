@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.google.gms.google-services")
 }
 
 android {
@@ -34,22 +33,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures{
-        viewBinding = true
-    }
 }
 
 dependencies {
     implementation(libs.retrofit)
     implementation (libs.converter.gson)
     implementation( libs.kotlin.parcelize.runtime)
-    implementation(libs.firebase.firestore.ktx)
     implementation(libs.androidx.datastore.core.android)
-    implementation(platform( libs.firebase.bom))
-    implementation(libs.firebase.analytics)
-    implementation(libs.firebase.firestore)
-    implementation(libs.mpandroidchart)
-    androidTestImplementation(libs.junit.jupiter)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
