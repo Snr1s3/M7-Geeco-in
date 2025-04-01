@@ -2,7 +2,9 @@ package com.example.m7_geeco_in.despesa
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.m7_geeco_in.R
 import com.example.m7_geeco_in.data.geecoinAPI
+import com.example.m7_geeco_in.fragments.Loading
 import com.example.m7_geeco_in.models.Despesses
 import com.example.m7_geeco_in.recycler.CustomAdapter
 import com.example.m7_geeco_in.recycler.ItemsView
@@ -24,7 +27,7 @@ import java.io.IOException
 class LlistaDespeses : AppCompatActivity() {
 
     private  var expenses: List<Despesses>? = listOf()
-
+    private val loadingFragment = Loading()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,6 +35,9 @@ class LlistaDespeses : AppCompatActivity() {
         setContentView(R.layout.activity_llista_despeses)
         val b1 = findViewById<Button>(R.id.button1)
         val b2 = findViewById<Button>(R.id.button2)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.loading_container, loadingFragment)
+            .commit()
         val bundle = intent.extras
         if (bundle != null && bundle.size() > 0) {
             val stringValue = bundle.getString("fNom")
@@ -55,7 +61,7 @@ class LlistaDespeses : AppCompatActivity() {
         }
     }
 
-    fun AddData(Despesses:List<Despesses>, key: String?, key2: Int?,key3: String?){
+    private fun AddData(Despesses:List<Despesses>, key: String?, key2: Int?,key3: String?){
         val recyclerview = findViewById<RecyclerView>(R.id.recycler1)
         recyclerview.layoutManager = LinearLayoutManager(this)
 
@@ -78,6 +84,11 @@ class LlistaDespeses : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 expenses = geecoinAPI.API().getDespesesList(skip = skip, limit = limit)
+                supportFragmentManager.beginTransaction()
+                    .remove(loadingFragment)
+                    .commit()
+                findViewById<FrameLayout>(R.id.loading_container).visibility = View.GONE
+                findViewById<RecyclerView>(R.id.recycler1).visibility= View.VISIBLE
                 if (expenses != null) {
                     AddData(expenses!!, key, key2, key3)
                     Toast.makeText(this@LlistaDespeses, "Dades Carregades", Toast.LENGTH_SHORT).show()

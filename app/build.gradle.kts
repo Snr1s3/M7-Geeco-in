@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -33,16 +34,23 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
-    // retrofit
-
     implementation(libs.retrofit)
-    // gson converter
     implementation (libs.converter.gson)
-    //Parcelize
     implementation( libs.kotlin.parcelize.runtime)
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.androidx.datastore.core.android)
+    implementation(platform( libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.firestore)
+    implementation(libs.mpandroidchart)
+    androidTestImplementation(libs.junit.jupiter)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -53,5 +61,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }

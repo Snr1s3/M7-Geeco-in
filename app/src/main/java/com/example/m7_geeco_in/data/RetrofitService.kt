@@ -63,9 +63,6 @@ interface RetrofitService {
 
     @PUT("incomes/{income_id}")
     suspend fun updateIngres(@Path("income_id") idIngres: Int, @Body request: IngresRequest): Response<Despesses>
-
-    @PUT("expenses/{expense_id}")
-    suspend fun updateExpese(@Path("expense_id") idExpese: Int, @Body request: DespesaRequest): Despesses
 }
 
 class geecoinAPI {

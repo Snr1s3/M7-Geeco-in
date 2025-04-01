@@ -15,7 +15,8 @@
     android:layout_height="wrap_content"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent" />
+    app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout="@layout/fragment_bottom" />
     <fragment
         android:id="@+id/fragment_top"
         android:name="com.example.m7_geeco_in.fragments.fragment_top"
@@ -23,7 +24,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_top" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,13 +72,18 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:orientation="vertical">
+            <FrameLayout
+                android:id="@+id/loading_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:itemCount="10"
-                tools:listitem="@layout/item_layout" />
+                tools:listitem="@layout/item_layout"
+                android:visibility="gone"/>
         </LinearLayout>
 
         <LinearLayout
