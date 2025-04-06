@@ -33,6 +33,9 @@
             android:name=".menu.Header"
             android:exported="false" />
         <activity
+            android:name=".informes.StatsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ingres.AfegirIngres"
             android:exported="false" />
         <activity

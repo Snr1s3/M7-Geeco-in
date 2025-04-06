@@ -21,13 +21,14 @@
     <!-- Main Content -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="SpeakableTextPresentCheck">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".ingres.AfegirIngres"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            tools:context=".ingres.AfegirIngres">
 
             <!-- Toolbar -->
             <androidx.appcompat.widget.Toolbar
@@ -72,6 +73,15 @@
             android:layout_height="75dp"
             android:fontFamily="@font/roboto"
             android:text="@string/despeses_"
+            android:textSize="30sp"
+            android:layout_marginBottom="50dp"/>
+
+        <Button
+            android:id="@+id/banaisis"
+            android:layout_width="300dp"
+            android:layout_height="75dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/btnStats"
             android:textSize="30sp"
             android:layout_marginBottom="50dp"/>
 

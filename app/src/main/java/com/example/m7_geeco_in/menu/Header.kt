@@ -16,6 +16,8 @@ import com.example.m7_geeco_in.R
 import com.example.m7_geeco_in.inicisessio.Ajuda
 import com.example.m7_geeco_in.inicisessio.IniciSessio
 import com.example.m7_geeco_in.despesa.LlistaDespeses
+import com.example.m7_geeco_in.informes.InforBoto
+import com.example.m7_geeco_in.informes.StatsActivity
 import com.example.m7_geeco_in.ingres.LlistaIngressos
 import com.example.m7_geeco_in.preferencies.Preferencies
 import com.example.m7_geeco_in.screen.MenuAndroid
@@ -47,12 +49,25 @@ class Header : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListe
         navigationView.setCheckedItem(R.id.action_about)
         val button = findViewById<Button>(R.id.bingresos)
         button.setOnClickListener {
+            InforBoto.estadistica.clicksIngresos++
             val intent = Intent(this@Header, LlistaIngressos::class.java)
             startActivity(intent)
         }
         val button2 = findViewById<Button>(R.id.bdespese)
         button2.setOnClickListener {
+            InforBoto.estadistica.clicksDespeses++
             val intent = Intent(this@Header, LlistaDespeses::class.java)
+            startActivity(intent)
+        }
+        val button3 = findViewById<Button>(R.id.banaisis)
+        button3.setOnClickListener {
+            val intent = Intent(this@Header, StatsActivity::class.java)
+            startActivity(intent)
+        }
+        val button4 = findViewById<Button>(R.id.bobjectius)
+        button4.setOnClickListener {
+            InforBoto.estadistica.clicksObjectius++
+            val intent = Intent(this@Header, StatsActivity::class.java)
             startActivity(intent)
         }
     }
