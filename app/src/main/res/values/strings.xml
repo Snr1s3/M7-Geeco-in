@@ -44,4 +44,8 @@
     <string name="cuantitat_num">2305,31€</string>
     <string name="sou_nadal_doble">Sou de doble de nadal.</string>
     <string name="sortit">Sortir</string>
+    <string name="resultat">Anàlisi de resultado</string>
+    <string name="btnEstadistica">Veure resultats</string>
+    <string name="btnGuardarStats">Guardar</string>
+    <string name="btnStats">Veure chart</string>
 </resources>
