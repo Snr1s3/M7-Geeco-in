@@ -3,13 +3,18 @@ package com.example.m7_geeco_in.inicisessio
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
 import com.example.m7_geeco_in.menu.Header
 import com.example.m7_geeco_in.R
 import com.example.m7_geeco_in.screen.MenuAndroid
+import com.example.m7_geeco_in.viewModel.registreViewModel
 
 class activity_registre : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +28,23 @@ class activity_registre : AppCompatActivity() {
             insets
         }
         val button = findViewById<Button>(R.id.loginButton)
+
+        val viewModel: registreViewModel by viewModels()
+
+        val user = findViewById<EditText>(R.id.mail)
+        val password = findViewById<EditText>(R.id.password)
+        val password2 = findViewById<EditText>(R.id.password2)
+        viewModel.isRegistered.observe(this, Observer { success ->
+            if (success) {
+                Toast.makeText(this, "Credencials correctes", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@activity_registre, Login::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Credencials incorrectes", Toast.LENGTH_SHORT).show()
+            }
+        })
         button.setOnClickListener {
-            val intent = Intent(this@activity_registre, Header::class.java)
-            startActivity(intent)
+            viewModel.registre(user.text.toString(), password.text.toString(), password2.text.toString())
         }
     }
 }
