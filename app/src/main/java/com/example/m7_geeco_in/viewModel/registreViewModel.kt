@@ -38,7 +38,7 @@ class registreViewModel : ViewModel() {
         }
         if (!nums.containsMatchIn(contrasenya)) {
             _isRegistered.value = false
-            Log.d("registreViewModel", "La contrasenya ha de tenir numeros")
+            Log.d("registreViewModel", "Testing: La contrasenya ha de tenir numeros")
             return
         }
 
