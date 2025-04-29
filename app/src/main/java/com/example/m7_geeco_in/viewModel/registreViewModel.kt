@@ -23,22 +23,22 @@ class registreViewModel : ViewModel() {
         }*/
         if (contrasenya != contrasenya2) {
             _isRegistered.value = false
-            Log.d("registreViewModel", "Test: Les contrasenyes no coincideixen")
+            Log.d("registreViewModel", "Testing: Les contrasenyes no coincideixen")
             return
         }
         if (contrasenya.length < 8) {
             _isRegistered.value = false
-            Log.d("registreViewModel", "Test: La contrasenya ha de tenir més de 8 caràcters")
+            Log.d("registreViewModel", "Testing: La contrasenya ha de tenir més de 8 caràcters")
             return
         }
         if (!upperCase.containsMatchIn(contrasenya)) {
             _isRegistered.value = false
-            Log.d("registreViewModel", "Test: La contrasenya ha de tenir caracters en majuscules")
+            Log.d("registreViewModel", "Testing: La contrasenya ha de tenir caracters en majuscules")
             return
         }
         if (!nums.containsMatchIn(contrasenya)) {
             _isRegistered.value = false
-            Log.d("registreViewModel", "Test: La contrasenya ha de tenir numeros")
+            Log.d("registreViewModel", "La contrasenya ha de tenir numeros")
             return
         }
 
