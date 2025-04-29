@@ -16,7 +16,6 @@ class registreViewModel : ViewModel() {
     fun registre(usuario: String, contrasenya: String, contrasenya2: String) {
         val upperCase = Regex("\\p{Lu}")
         val nums = Regex("[0-9]")
-        //err = "" // No longer needed
         /* if(algo){
             _isRegistered.value = false
             return
