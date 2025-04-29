@@ -1,5 +1,6 @@
 package com.example.m7_geeco_in.inicisessio
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -17,6 +18,7 @@ import com.example.m7_geeco_in.screen.MenuAndroid
 import com.example.m7_geeco_in.viewModel.registreViewModel
 
 class activity_registre : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -31,16 +33,15 @@ class activity_registre : AppCompatActivity() {
 
         val viewModel: registreViewModel by viewModels()
 
-        val user = findViewById<EditText>(R.id.mail)
+        val user = findViewById<EditText>(R.id.email)
         val password = findViewById<EditText>(R.id.password)
         val password2 = findViewById<EditText>(R.id.password2)
         viewModel.isRegistered.observe(this, Observer { success ->
             if (success) {
-                Toast.makeText(this, "Credencials correctes", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@activity_registre, Login::class.java)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Credencials incorrectes", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Les credencials son incorrectes", Toast.LENGTH_SHORT).show()
             }
         })
         button.setOnClickListener {
