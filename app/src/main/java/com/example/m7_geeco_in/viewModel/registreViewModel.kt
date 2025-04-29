@@ -12,10 +12,11 @@ class registreViewModel : ViewModel() {
 
     private val _isRegistered = MutableLiveData<Boolean>()
     val isRegistered: LiveData<Boolean> get() = _isRegistered
+    val upperCase = Regex("\\p{Lu}")
+    val nums = Regex("[0-9]")
 
     fun registre(usuario: String, contrasenya: String, contrasenya2: String) {
-        val upperCase = Regex("\\p{Lu}")
-        val nums = Regex("[0-9]")
+
         /* if(algo){
             _isRegistered.value = false
             return
