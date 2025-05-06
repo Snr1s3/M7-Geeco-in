@@ -43,11 +43,19 @@ class registreViewModel : ViewModel() {
             if (!isTest) Log.d("registreViewModel", "Testing: La contrasenya ha de tenir numeros")
             return
         }
-
+        if (!isEmailValid(usuario)) {
+            _isRegistered.value = false
+            if (!isTest) Log.d("registreViewModel", "Testing: Mail incorrecte")
+            return
+        }
         _isRegistered.value = true
         if (!isTest) Log.d("registreViewModel", "User registered successfully")
     }
 
+    private fun isEmailValid(email: String): Boolean {
+        val emailRegex = Regex("^[^\\s]+@[^\\s]+\\.(com|es|net|org|edu|gov|info|cat)\$")
+        return emailRegex.matches(email)
+    }
     fun test(){
 
     }
