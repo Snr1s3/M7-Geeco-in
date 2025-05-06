@@ -15,34 +15,40 @@ class registreViewModel : ViewModel() {
     val upperCase = Regex("\\p{Lu}")
     val nums = Regex("[0-9]")
 
-    fun registre(usuario: String, contrasenya: String, contrasenya2: String) {
+    fun registre(usuario: String, contrasenya: String, contrasenya2: String,  isTest: Boolean = false) {
+        if(usuario == "test" && contrasenya == "test" && contrasenya2 == "test")    {
 
+        }
         /* if(algo){
             _isRegistered.value = false
             return
         }*/
         if (contrasenya != contrasenya2) {
             _isRegistered.value = false
-            Log.d("registreViewModel", "Testing: Les contrasenyes no coincideixen")
+            if (!isTest) Log.d("registreViewModel", "Testing: Les contrasenyes no coincideixen")
             return
         }
         if (contrasenya.length < 8) {
             _isRegistered.value = false
-            Log.d("registreViewModel", "Testing: La contrasenya ha de tenir més de 8 caràcters")
+            if (!isTest) Log.d("registreViewModel", "Testing: La contrasenya ha de tenir més de 8 caràcters")
             return
         }
         if (!upperCase.containsMatchIn(contrasenya)) {
             _isRegistered.value = false
-            Log.d("registreViewModel", "Testing: La contrasenya ha de tenir caracters en majuscules")
+            if (!isTest) Log.d("registreViewModel", "Testing: La contrasenya ha de tenir caracters en majuscules")
             return
         }
         if (!nums.containsMatchIn(contrasenya)) {
             _isRegistered.value = false
-            Log.d("registreViewModel", "Testing: La contrasenya ha de tenir numeros")
+            if (!isTest) Log.d("registreViewModel", "Testing: La contrasenya ha de tenir numeros")
             return
         }
 
         _isRegistered.value = true
-        Log.d("registreViewModel", "User registered successfully")
+        if (!isTest) Log.d("registreViewModel", "User registered successfully")
+    }
+
+    fun test(){
+
     }
 }

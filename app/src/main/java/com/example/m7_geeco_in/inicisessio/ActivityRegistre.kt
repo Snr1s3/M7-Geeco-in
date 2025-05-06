@@ -45,7 +45,7 @@ class activity_registre : AppCompatActivity() {
             }
         })
         button.setOnClickListener {
-            viewModel.registre(user.text.toString(), password.text.toString(), password2.text.toString())
+            viewModel.registre(user.text.toString(), password.text.toString(), password2.text.toString(), false)
         }
     }
 }
