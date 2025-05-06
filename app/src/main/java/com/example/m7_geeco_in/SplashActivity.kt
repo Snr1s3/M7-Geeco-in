@@ -18,12 +18,10 @@ class SplashActivity : AppCompatActivity() {
         val rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.rotacio)
         logo.startAnimation(rotateAnimation)
 
-        // Configurar un temporizador de 2 segundos
         Handler().postDelayed({
-            // Iniciar MainActivity después de 2 segundos
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
             finish()
-        }, 2000) // 2000 milisegundos = 2 segundos
+        }, 2000)
     }
 }

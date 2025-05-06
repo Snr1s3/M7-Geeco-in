@@ -56,6 +56,8 @@ dependencies {
     implementation( libs.kotlin.parcelize.runtime)
     implementation(libs.androidx.datastore.core.android)
     implementation(libs.mpandroidchart)
+    implementation(libs.junit.jupiter)
+    implementation(libs.firebase.firestore.ktx)
     androidTestImplementation(libs.junit.jupiter)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
