@@ -15,10 +15,7 @@ class registreViewModel : ViewModel() {
     val upperCase = Regex("\\p{Lu}")
     val nums = Regex("[0-9]")
 
-    fun registre(usuario: String, contrasenya: String, contrasenya2: String,  isTest: Boolean = false) {
-        if(usuario == "test" && contrasenya == "test" && contrasenya2 == "test")    {
-
-        }
+    fun registre(nom: String, mail:String, contrasenya: String, contrasenya2: String,  isTest: Boolean = false) {
         /* if(algo){
             _isRegistered.value = false
             return
@@ -43,7 +40,7 @@ class registreViewModel : ViewModel() {
             if (!isTest) Log.d("registreViewModel", "Testing: La contrasenya ha de tenir numeros")
             return
         }
-        if (!isEmailValid(usuario)) {
+        if (!isEmailValid(mail)) {
             _isRegistered.value = false
             if (!isTest) Log.d("registreViewModel", "Testing: Mail incorrecte")
             return
@@ -55,8 +52,5 @@ class registreViewModel : ViewModel() {
     private fun isEmailValid(email: String): Boolean {
         val emailRegex = Regex("^[^\\s]+@[^\\s]+\\.(com|es|net|org|edu|gov|info|cat)\$")
         return emailRegex.matches(email)
-    }
-    fun test(){
-
     }
 }

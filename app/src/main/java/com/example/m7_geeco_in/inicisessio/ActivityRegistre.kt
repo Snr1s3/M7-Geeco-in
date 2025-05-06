@@ -33,7 +33,8 @@ class activity_registre : AppCompatActivity() {
 
         val viewModel: registreViewModel by viewModels()
 
-        val user = findViewById<EditText>(R.id.email)
+        val mail = findViewById<EditText>(R.id.email)
+        val nom = findViewById<EditText>(R.id.nom)
         val password = findViewById<EditText>(R.id.password)
         val password2 = findViewById<EditText>(R.id.password2)
         viewModel.isRegistered.observe(this, Observer { success ->
@@ -45,7 +46,7 @@ class activity_registre : AppCompatActivity() {
             }
         })
         button.setOnClickListener {
-            viewModel.registre(user.text.toString(), password.text.toString(), password2.text.toString(), false)
+            viewModel.registre(nom.text.toString(), mail.text.toString(), password.text.toString(), password2.text.toString(), false)
         }
     }
 }

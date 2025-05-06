@@ -38,7 +38,7 @@
         android:gravity="center"
         android:text="@string/CCboto"
         android:textColor="@color/md_theme_primary"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="italic|bold"></TextView>
 
     <LinearLayout
@@ -46,18 +46,35 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/md_theme_tertiaryFixedDim"
-        android:padding="20dp"
-        android:layout_margin="30dp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
         android:layout_gravity="center">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/infoNomAdreca"
+            android:text="@string/infoNom"
             android:fontFamily="@font/roboto"
             android:textColor="#333"
             android:textSize="16sp"
             android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/nom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/editbox_background"
+            android:hint="@string/infoHint"
+            android:fontFamily="@font/roboto"
+            android:padding="8dp"
+            tools:ignore="TouchTargetSizeCheck" /><TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/infoAdreca"
+        android:fontFamily="@font/roboto"
+        android:textColor="#333"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
         <EditText
             android:id="@+id/email"
