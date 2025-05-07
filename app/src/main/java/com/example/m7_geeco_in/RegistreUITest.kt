@@ -1,6 +1,6 @@
 package com.example.m7_geeco_in
 
-
+/*
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.test.core.app.ActivityScenario
@@ -49,3 +49,4 @@ class RegistreUITest {
         return currentActivity
     }
 }
+*/

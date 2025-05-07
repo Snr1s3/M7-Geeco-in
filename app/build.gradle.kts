@@ -69,6 +69,9 @@ dependencies {
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.retrofit)
     testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.androidx.core.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -76,4 +79,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
+    androidTestImplementation(libs.androidx.core.testing)
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
