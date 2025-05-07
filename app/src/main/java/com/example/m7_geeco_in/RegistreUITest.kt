@@ -1,6 +1,5 @@
 package com.example.m7_geeco_in
 
-/*
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.test.core.app.ActivityScenario
@@ -25,7 +24,7 @@ class RegistreUITest {
 
         onView(withId(R.id.nom)).perform(typeText("Joan"))
         onView(withId(R.id.email)).perform(typeText("joan@example.com"))
-        onView(withId(R.id.password)).perform(typeText("Password1"))
+        onView(withId(R.id.password1)).perform(typeText("Password1"))
         onView(withId(R.id.password2)).perform(typeText("Password2"))
         closeSoftKeyboard()
         onView(withId(R.id.loginButton)).perform(click())
@@ -49,4 +48,3 @@ class RegistreUITest {
         return currentActivity
     }
 }
-*/
