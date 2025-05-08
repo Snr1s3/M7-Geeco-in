@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
-import com.example.m7_geeco_in.menu.Header
 import com.example.m7_geeco_in.R
 import com.example.m7_geeco_in.screen.MenuAndroid
 import com.example.m7_geeco_in.viewModel.registreViewModel
@@ -45,13 +44,6 @@ class activity_registre : AppCompatActivity() {
                 Toast.makeText(this, "Les credencials son incorrectes", Toast.LENGTH_SHORT).show()
             }
         })
-
-        viewModel.errorNomUsuari.observe(this) { error ->
-            error?.let {
-                nom.error = it
-                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-            }
-        }
 
         button.setOnClickListener {
             viewModel.registre(nom.text.toString(), mail.text.toString(), password.text.toString(), password2.text.toString(), false)

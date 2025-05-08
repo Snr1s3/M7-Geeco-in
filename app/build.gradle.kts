@@ -51,12 +51,15 @@ android {
 }
 
 dependencies {
+    testImplementation("junit:junit:4.13.2") // Or the latest version
+    testImplementation("androidx.arch.core:core-testing:2.2.0") // Or the latest version
+    testImplementation("org.mockito:mockito-core:5.10.0") // Or the latest version
+    testImplementation("org.mockito:mockito-inline:5.2.0") // Or the latest version
     implementation(libs.retrofit)
     implementation (libs.converter.gson)
     implementation( libs.kotlin.parcelize.runtime)
     implementation(libs.androidx.datastore.core.android)
     implementation(libs.mpandroidchart)
-    implementation(libs.junit.jupiter)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.androidx.espresso.core)
     implementation(libs.androidx.junit.ktx)
@@ -69,19 +72,11 @@ dependencies {
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.retrofit)
     testImplementation(libs.junit)
-    testImplementation(libs.junit.jupiter.api)
-    testImplementation(libs.junit.jupiter.engine)
     testImplementation(libs.androidx.core.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
     androidTestImplementation(libs.androidx.core.testing)
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }

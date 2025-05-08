@@ -1,9 +1,6 @@
 package com.example.m7_geeco_in.viewModel
 
-
-
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,42 +12,36 @@ class registreViewModel : ViewModel() {
 
     val upperCase = Regex("\\p{Lu}")
     val nums = Regex("[0-9]")
-    private val nomUsuariRegex = Regex("^[a-zA-Z0-9_]+\$")
-
-    private val _errorNomUsuari = MutableLiveData<String?>()
-    val errorNomUsuari: LiveData<String?> get() = _errorNomUsuari
 
     fun registre(nom: String, mail:String, contrasenya: String, contrasenya2: String,  isTest: Boolean = false) {
-
-        _errorNomUsuari.value = null
         _isRegistered.value = false
 
         if (nom.trim().isEmpty()) {
-            _errorNomUsuari.value = "El nom d'usuari és obligatori"
+            _isRegistered.value = false
             if (!isTest) Log.d("registreViewModel", "Error: Nom d'usuari buit")
             return
         }
 
         if (nom.contains(" ")) {
-            _errorNomUsuari.value = "No es permeten espais en el nom"
+            _isRegistered.value = false
             if (!isTest) Log.d("registreViewModel", "Error: Nom conté espais")
             return
         }
 
         if (nom.length < 3) {
-            _errorNomUsuari.value = "Mínim 3 caràcters"
+            _isRegistered.value = false
             if (!isTest) Log.d("registreViewModel", "Error: Nom massa curt")
             return
         }
 
         if (nom.length >= 20) {
-            _errorNomUsuari.value = "Màxim 20 caràcters"
+            _isRegistered.value = false
             if (!isTest) Log.d("registreViewModel", "Error: Nom massa llarg")
             return
         }
 
         if (!nom.matches(Regex("^[a-zA-Z0-9_]+$"))) {
-            _errorNomUsuari.value = "Només lletres, números i _"
+            _isRegistered.value = false
             if (!isTest) Log.d("registreViewModel", "Error: Caràcters invàlids")
             return
         }
@@ -87,6 +78,7 @@ class registreViewModel : ViewModel() {
         }
 
         if (nom.contains(" ")) {
+            _isRegistered.value = false
             if (!isTest) Log.d("registreViewModel", "Testing: No es permeten espais en el nom")
             return
         }
