@@ -1,12 +1,11 @@
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
 import com.example.m7_geeco_in.viewModel.registreViewModel
 import org.junit.Assert.*
 import org.junit.Before
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.Rule
 import org.junit.Test
 
-class registreViewModelTest {
+class RegistreViewModelTest {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -127,6 +126,42 @@ class registreViewModelTest {
 
     @Test fun unicodeEnUsuario() {
         viewModel.registre("user","usér@example.com", "Password1", "Password1", true)
+        assertTrue(viewModel.isRegistered.value!!)
+    }
+    @Test
+    fun registre_falla_quan_el_nom_es_buit() {
+        viewModel.registre("","user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value!!)
+    }
+
+
+    @Test
+    fun `registre falla quan el nom conte espais`() {
+        viewModel.registre("nom amb espais","user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value ?: true)
+    }
+
+    @Test
+    fun `registre falla quan el nom es massa curt`() {
+        viewModel.registre("ab","user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value ?: true)
+    }
+
+    @Test
+    fun `registre falla quan el nom es massa llarg`() {
+        viewModel.registre("a".repeat(21),"user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value ?: true)
+    }
+
+    @Test
+    fun `registre falla quan el nom conte caracters invalids`() {
+        viewModel.registre("user@name","user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value ?: true)
+    }
+
+    @Test
+    fun registre_exitos_quan_el_nom_es_valid() {
+        viewModel.registre("Usuari_Valid123","user@example.com", "Password1", "Password1", true)
         assertTrue(viewModel.isRegistered.value!!)
     }
 }

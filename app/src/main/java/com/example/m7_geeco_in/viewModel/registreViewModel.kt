@@ -80,6 +80,34 @@ class registreViewModel : ViewModel() {
             if (!isTest) Log.d("registreViewModel", "Testing: Mail incorrecte")
             return
         }
+        if (nom.trim().isEmpty()) {
+            if (!isTest) Log.d("registreViewModel", "Testing: El nom d'usuari és obligatori")
+            _isRegistered.value = false
+            return
+        }
+
+        if (nom.contains(" ")) {
+            if (!isTest) Log.d("registreViewModel", "Testing: No es permeten espais en el nom")
+            return
+        }
+
+        if (nom.length < 3) {
+            if (!isTest) Log.d("registreViewModel", "Testing: Mínim 3 caràcters")
+            _isRegistered.value = false
+            return
+        }
+
+        if (nom.length >= 20) {
+            if (!isTest) Log.d("registreViewModel", "Testing: Màxim 20 caràcters")
+            _isRegistered.value = false
+            return
+        }
+
+        if (!nom.matches(Regex("^[a-zA-Z0-9_]+$"))) {
+            if (!isTest) Log.d("registreViewModel", "Testing: Només lletres, números i _")
+            _isRegistered.value = false
+            return
+        }
         _isRegistered.value = true
         if (!isTest) Log.d("registreViewModel", "User registered successfully")
     }
