@@ -18,6 +18,66 @@ class registreViewModelTest {
     }
 
     @Test
+    fun nombreUsuarioVacio() {
+        viewModel.registre("", "user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value!!)
+    }
+
+    @Test
+    fun nombreUsuarioConEspacios() {
+        viewModel.registre("mi usuario", "user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value!!)
+    }
+
+    @Test
+    fun nombreUsuarioDemasiadoCorto() {
+        viewModel.registre("ab", "user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value!!)
+    }
+
+    @Test
+    fun nombreUsuarioDemasiadoLargo() {
+        viewModel.registre("aaaaaaaaaaaaaaaaaaaaa", "user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value!!)
+    }
+
+    @Test
+    fun nombreUsuarioConCaracteresInvalidos() {
+        viewModel.registre("usuario!@", "user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value!!)
+    }
+
+    @Test
+    fun nombreConMultiplesGuiones() {
+        viewModel.registre("usuari_test_123", "user@example.com", "Password1", "Password1", true)
+        assertTrue(viewModel.isRegistered.value!!)
+    }
+
+    @Test
+    fun nombreUsuarioConMultiplesGuionesBajosSeguidos() {
+        viewModel.registre("usuari____prova", "user@example.com", "Password1", "Password1", true)
+        assertFalse(viewModel.isRegistered.value!!)
+    }
+
+    @Test
+    fun nombreUsuarioValido() {
+        viewModel.registre("usuario_123", "user@example.com", "Password1", "Password1", true)
+        assertTrue(viewModel.isRegistered.value!!)
+    }
+
+    @Test
+    fun nombreSoloMayusculas() {
+        viewModel.registre("USERNAME", "user@example.com", "Password1", "Password1", true)
+        assertTrue(viewModel.isRegistered.value!!)
+    }
+
+    @Test
+    fun nombreSoloMinusculas() {
+        viewModel.registre("usuari", "user@example.com", "Password1", "Password1", true)
+        assertTrue(viewModel.isRegistered.value!!)
+    }
+
+    @Test
     fun passwordsDoNotMatch_setsIsRegisteredFalse() {
         viewModel.registre("user", "user@example.com","Password1", "Password2", true)
         assertFalse(viewModel.isRegistered.value!!)

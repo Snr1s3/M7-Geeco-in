@@ -100,6 +100,13 @@ class registreViewModel : ViewModel() {
             _isRegistered.value = false
             return
         }
+
+        if (nom.contains(Regex("___+"))) {
+            _isRegistered.value = false
+            if (!isTest) Log.d("registreViewModel", "Error: No es permeten més de dos guions baixos seguits")
+            return
+        }
+
         _isRegistered.value = true
         if (!isTest) Log.d("registreViewModel", "User registered successfully")
     }

@@ -1,7 +1,6 @@
 package com.example.m7_geeco_in
 
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.closeSoftKeyboard
@@ -29,13 +28,11 @@ class RegistreUITest {
         closeSoftKeyboard()
         onView(withId(R.id.loginButton)).perform(click())
 
-        // Verifica que es mostra el Toast d'error
         onView(withText("Les credencials son incorrectes"))
             .inRoot(withDecorView(not(`is`(getCurrentActivity()?.window?.decorView))))
             .check(matches(isDisplayed()))
     }
 
-    // Aquesta funció permet accedir a l'activity actual (necessària per ToastMatcher)
     private fun getCurrentActivity(): android.app.Activity? {
         var currentActivity: android.app.Activity? = null
         androidx.test.core.app.ActivityScenario.launch(activity_registre::class.java).onActivity {
