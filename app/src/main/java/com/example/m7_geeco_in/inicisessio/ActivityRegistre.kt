@@ -45,6 +45,20 @@ class activity_registre : AppCompatActivity() {
             }
         })
 
+        viewModel.errorNomUsuari.observe(this) { error ->
+            error?.let {
+                nom.error = it
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.errorContrasenya.observe(this) { error ->
+            error?.let {
+                password2.error = it
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            }
+        }
+
         button.setOnClickListener {
             viewModel.registre(nom.text.toString(), mail.text.toString(), password.text.toString(), password2.text.toString(), false)
         }

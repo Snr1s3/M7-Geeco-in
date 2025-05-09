@@ -6,6 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class registreViewModel : ViewModel() {
+    private val _errorNomUsuari = MutableLiveData<String?>()
+    val errorNomUsuari: LiveData<String?> get() = _errorNomUsuari
+
+    private val _errorContrasenya = MutableLiveData<String?>()
+    val errorContrasenya: LiveData<String?> get() = _errorContrasenya
 
     private val _isRegistered = MutableLiveData<Boolean>()
     val isRegistered: LiveData<Boolean> get() = _isRegistered
@@ -14,39 +19,54 @@ class registreViewModel : ViewModel() {
     val nums = Regex("[0-9]")
 
     fun registre(nom: String, mail:String, contrasenya: String, contrasenya2: String,  isTest: Boolean = false) {
+        _errorNomUsuari.value = null
+        _errorContrasenya.value = null
         _isRegistered.value = false
 
         if (nom.trim().isEmpty()) {
+            _errorNomUsuari.value = "El nom d'usuari és obligatori"
             _isRegistered.value = false
-            if (!isTest) Log.d("registreViewModel", "Error: Nom d'usuari buit")
+            if (!isTest) Log.d("registreViewModel", "Testing: Nom d'usuari buit")
             return
         }
 
         if (nom.contains(" ")) {
+            _errorNomUsuari.value = "No es permeten espais en el nom"
             _isRegistered.value = false
-            if (!isTest) Log.d("registreViewModel", "Error: Nom conté espais")
+            if (!isTest) Log.d("registreViewModel", "Testing: Nom conté espais")
             return
         }
 
         if (nom.length < 3) {
+            _errorNomUsuari.value = "Mínim 3 caràcters"
             _isRegistered.value = false
-            if (!isTest) Log.d("registreViewModel", "Error: Nom massa curt")
+            if (!isTest) Log.d("registreViewModel", "Testing: Nom massa curt")
             return
         }
 
         if (nom.length >= 20) {
+            _errorNomUsuari.value = "Màxim 20 caràcters"
             _isRegistered.value = false
-            if (!isTest) Log.d("registreViewModel", "Error: Nom massa llarg")
+            if (!isTest) Log.d("registreViewModel", "Testing: Nom massa llarg")
             return
         }
 
         if (!nom.matches(Regex("^[a-zA-Z0-9_]+$"))) {
+            _errorNomUsuari.value = "Només lletres, números i _"
             _isRegistered.value = false
-            if (!isTest) Log.d("registreViewModel", "Error: Caràcters invàlids")
+            if (!isTest) Log.d("registreViewModel", "Testing: Caràcters invàlids")
+            return
+        }
+
+        if (nom.contains(Regex("___+"))) {
+            _errorNomUsuari.value = "No es permet _ dues vegades"
+            _isRegistered.value = false
+            if (!isTest) Log.d("registreViewModel", "Testing: No es permeten més de dos guions baixos seguits")
             return
         }
 
         if (contrasenya != contrasenya2) {
+            _errorContrasenya.value = "Les contrasenyes no coincideixen"
             _isRegistered.value = false
             if (!isTest) Log.d("registreViewModel", "Testing: Les contrasenyes no coincideixen")
             return
@@ -69,41 +89,6 @@ class registreViewModel : ViewModel() {
         if (!isEmailValid(mail)) {
             _isRegistered.value = false
             if (!isTest) Log.d("registreViewModel", "Testing: Mail incorrecte")
-            return
-        }
-        if (nom.trim().isEmpty()) {
-            if (!isTest) Log.d("registreViewModel", "Testing: El nom d'usuari és obligatori")
-            _isRegistered.value = false
-            return
-        }
-
-        if (nom.contains(" ")) {
-            _isRegistered.value = false
-            if (!isTest) Log.d("registreViewModel", "Testing: No es permeten espais en el nom")
-            return
-        }
-
-        if (nom.length < 3) {
-            if (!isTest) Log.d("registreViewModel", "Testing: Mínim 3 caràcters")
-            _isRegistered.value = false
-            return
-        }
-
-        if (nom.length >= 20) {
-            if (!isTest) Log.d("registreViewModel", "Testing: Màxim 20 caràcters")
-            _isRegistered.value = false
-            return
-        }
-
-        if (!nom.matches(Regex("^[a-zA-Z0-9_]+$"))) {
-            if (!isTest) Log.d("registreViewModel", "Testing: Només lletres, números i _")
-            _isRegistered.value = false
-            return
-        }
-
-        if (nom.contains(Regex("___+"))) {
-            _isRegistered.value = false
-            if (!isTest) Log.d("registreViewModel", "Error: No es permeten més de dos guions baixos seguits")
             return
         }
 
